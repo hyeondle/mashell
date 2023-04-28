@@ -6,7 +6,7 @@
 /*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 23:53:07 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/04/28 21:35:38 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/04/29 07:58:43 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static t_setting	*init_set(char **envp)
 	set = (t_setting *)malloc(sizeof(t_setting));
 	if (!set)
 		return (NULL);
-	set->exit = 0;
+	set->last_exit_status = 0;
 	set->l_history = NULL;
 	set->s_history = NULL;
 	init_env(envp, &set);

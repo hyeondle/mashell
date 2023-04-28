@@ -6,7 +6,7 @@
 /*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 17:23:42 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/04/28 19:08:47 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/04/29 07:58:17 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,10 @@ static char	*take_my_env(t_setting **set, char *str, int i)
 	char	*key;
 
 	key = get_env_key(str, i);
-	value = get_env_value((*set)->env_list, key);
+	value = get_env_value((*set)->env_list, key, set);
 	if (!value)
 		value = "";
 	temp = join_sentence(str, i, key, value);
-	//free(str);
-	//free(key);
 	if (dollardollar(temp) >= 0)
 		temp = take_my_env(set, temp, dollardollar(temp));
 	return (temp);
