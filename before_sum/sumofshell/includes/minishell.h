@@ -6,7 +6,7 @@
 /*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 23:53:34 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/04/28 20:05:29 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/04/28 21:20:27 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ fcntl.h		=	open, read, close
 # include <fcntl.h>
 # include <readline/readline.h>
 # include <readline/history.h>
+# include "../../../hyejeong/pipex.h"
+
 
 # define HISTORY_FILE	".minishell_history"
 # ifndef HISTORY_SIZE

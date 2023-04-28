@@ -50,7 +50,7 @@ char	**append_str(char **arg, char *str)
 	i++;
 	new_arr[i] = NULL;
 	if (arg)
-		free_2d_arr(arg);
+		free_2d_array(arg);
 	return (new_arr);
 }
 

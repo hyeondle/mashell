@@ -6,7 +6,7 @@
 /*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:43:19 by Linsio            #+#    #+#             */
-/*   Updated: 2023/04/28 20:09:42 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/04/28 21:20:59 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int	execute(char **inputs, t_setting **set)
 	else if (ft_strcmp(o, "unset") == 0)
 		ft_unset(set, inputs);
 	else
-		test_ft(inputs, (*set)->envp, set);
+		run_cmd(inputs, (*set)->envp);
 	// }
 	return ((*set)->child_exit_status);
 }

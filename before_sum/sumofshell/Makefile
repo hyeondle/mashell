@@ -6,7 +6,7 @@
 #    By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/14 15:17:23 by hyeondle          #+#    #+#              #
-#    Updated: 2023/04/28 20:00:10 by hyeondle         ###   ########.fr        #
+#    Updated: 2023/04/28 21:27:58 by hyeondle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,7 +66,6 @@ SOURCES_MAKING	=	execute/execute.c\
 					history/ft_add_history.c\
 					history/init_history.c\
 					history/save_history.c\
-					demo2.c\
 					tokenize/token_split/case/go_split_over_delim.c\
 					tokenize/token_split/case/token_split_case_no_back_over_delim.c\
 					tokenize/token_split/case/token_split_case_no_front_over_delim.c\
@@ -76,10 +75,24 @@ SOURCES_MAKING	=	execute/execute.c\
 					environment/convert_env_to_str/convertion.c\
 					input/del_quotes.c\
 
+SOURCES_HD		=	../../hyejeong/deque.c\
+					../../hyejeong/exec.c\
+					../../hyejeong/heredoc.c\
+					../../hyejeong/heredoc2.c\
+					../../hyejeong/node.c\
+					../../hyejeong/redir.c\
+					../../hyejeong/run.c\
+					../../hyejeong/run2.c\
+					../../hyejeong/utils.c\
+
+INCD_HD			=	../../hyejeong/
+
+
 SOURCE			=	$(addprefix $(SOURCE_DIR), $(SOURCES))
 SOURCE_N		=	$(addprefix $(SOURCE_DIR), $(SOURCES_MAKING))
 OBJECT			=	$(SOURCE:.c=.o)\
-					$(SOURCE_N:.c=.o)
+					$(SOURCE_N:.c=.o)\
+					$(SOURCES_HD:.c=.o)\
 
 LIBFT_DIR		=	./libft/
 LIBFT			=	$(LIBFT_DIR)libft.a
@@ -93,7 +106,7 @@ RM				=	rm -f
 RM_OBJECT		=	rm -rf $(OBJECT)
 
 .c.o			:
-					$(CC) -g -fsanitize=address -I $(HEADER_DIR) -I/goinfre/hyeondle/.brew/opt/readline/include -c  $< -o $(<:.c=.o)
+					$(CC) -g -fsanitize=address -I $(HEADER_DIR) -I $(INCD_HD) -I/goinfre/hyeondle/.brew/opt/readline/include -c  $< -o $(<:.c=.o)
 
 all				:	$(NAME)
 
@@ -101,7 +114,7 @@ $(LIBFT)		:
 					make -C $(LIBFT_DIR)
 
 $(NAME)			:	$(OBJECT) $(LIBFT) $(READLINE)
-					$(CC) -g -fsanitize=address -I $(HEADER_DIR) $(OBJECT) $(READLINE_FLAG) $(LIBFT_FLAG) -o $(NAME)
+					$(CC) -g -fsanitize=address -I $(HEADER_DIR) -I $(INCD_HD) $(OBJECT) $(READLINE_FLAG) $(LIBFT_FLAG) -o $(NAME)
 
 clean			:
 					$(RM_OBJECT)
