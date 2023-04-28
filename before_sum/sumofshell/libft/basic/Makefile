@@ -6,7 +6,7 @@
 #    By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 17:18:24 by hyeondle          #+#    #+#              #
-#    Updated: 2023/04/22 18:07:41 by hyeondle         ###   ########.fr        #
+#    Updated: 2023/04/29 05:09:53 by hyeondle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,6 +56,7 @@ SRCS	=	ft_atoi.c\
 			ft_strcmp.c\
 			ft_strndup.c\
 			ft_strncmp.c\
+			ft_strnlen.c\
 
 OBJS	= ${SRCS:.c=.o}
 INCD	= ./

@@ -6,7 +6,7 @@
 /*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 15:50:01 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/04/22 17:32:09 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/04/29 05:10:39 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,6 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 int		ft_strcmp(const char *s1, const char *s2);
 char	*ft_strndup(const char *s, size_t n);
+int		ft_strnlen(const char *str, char c);
+
 #endif

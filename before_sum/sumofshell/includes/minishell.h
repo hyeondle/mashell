@@ -6,7 +6,7 @@
 /*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 23:53:34 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/04/28 21:20:27 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/04/29 06:56:04 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,5 +171,8 @@ void	test_ft(char **argv, char **envp, t_setting **set);
 /*temp*/
 char	*convertion(t_setting **set, char *str);
 char	*del_quotes(t_setting **set, char *str);
+
+char	*get_key(const char *str);
+char	*get_value(const char *str);
 
 #endif

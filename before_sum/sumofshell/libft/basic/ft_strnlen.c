@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_export.c                                        :+:      :+:    :+:   */
+/*   ft_strnlen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/12 02:47:04 by Linsio            #+#    #+#             */
-/*   Updated: 2023/04/29 05:01:02 by hyeondle         ###   ########.fr       */
+/*   Created: 2023/04/29 05:08:41 by hyeondle          #+#    #+#             */
+/*   Updated: 2023/04/29 05:10:32 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/minishell.h"
-
-int	ft_export(t_setting **set, char **inputs)
+int	ft_strnlen(const char *str, char c)
 {
-	int		i;
-	char	*key;
+	int	i;
 
-	i = 1;
-	while (inputs[i])
+	i = 0;
+	while(str[i])
 	{
-		add_env(&((*set)->env_list), inputs[i], set);
+		if (str[i] == c)
+			return (i);
 		i++;
 	}
-	return (0);
+	return (-1);
 }

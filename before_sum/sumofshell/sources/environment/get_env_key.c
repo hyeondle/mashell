@@ -6,7 +6,7 @@
 /*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 04:30:19 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/04/28 19:22:51 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/04/29 07:13:51 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,11 @@ char	*get_env_key(char *str, int i)
 	j = 0;
 	while (str[k] != '$' && str[k] != '\0' && str[k] != '\"' \
 			&& str[k] != ' ' && str[k] != '\'')
+	{
+		if (!((str[k] > 47 && str[k] < 58) || (str[k] > 64 && str[k] < 91) || (str[k] > 96 && str[k] < 123)))
+			break;
 		k++;
+	}
 	key = (char *)malloc(sizeof(char) * (k - i));
 	if (!key)
 		return (NULL);
