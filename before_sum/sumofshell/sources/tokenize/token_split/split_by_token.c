@@ -6,37 +6,50 @@
 /*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 08:49:06 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/04/28 15:03:20 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/04/29 09:47:22 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
 
+static char	**split_case(char **str, int i)
+{
+	int	k;
+
+	k = 0;
+	k = check_delimeter_type_i(str[i]);
+	if (str[i][k + 1] != '\0' && token_check(str[i][k + 1]) == 1)
+		return (over_2_delims(str, i, k));
+	else
+		return (split_by_case(str, i, k));
+}
+
+static int	split_case_i(char **str, int i)
+{
+	int	k;
+
+	k = 0;
+	k = check_delimeter_type_i(str[i]);
+	if (str[i][k + 1] != '\0' && token_check(str[i][k + 1]) == 1)
+		return (over_2_delims_i(str, i, k));
+	else
+		return (split_case_index_check(str, i, k));
+}
+
 char	**split_by_token(char **str)
 {
 	char	**temp_2;
 	int		i;
-	int		k;
 	int		c;
 
 	i = 0;
-	k = 0;
 	temp_2 = str;
 	while (temp_2[i])
 	{
 		if (check_delimeter(temp_2[i]))
 		{
-			k = check_delimeter_type_i(temp_2[i]);
-			if (temp_2[i][k + 1] != '\0' && token_check(temp_2[i][k + 1]) == 1)
-			{
-				temp_2 = over_2_delims(temp_2, i, k);
-				c = over_2_delims_i(temp_2, i, k);
-			}
-			else
-			{
-				c = split_case_index_check(temp_2, i, k);
-				temp_2 = split_by_case(temp_2, i, k);
-			}
+			temp_2 = split_case(temp_2, i);
+			c = split_case_i(temp_2, i);
 			i = i + c;
 		}
 		else

@@ -6,7 +6,7 @@
 #    By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/14 15:17:23 by hyeondle          #+#    #+#              #
-#    Updated: 2023/04/28 21:27:58 by hyeondle         ###   ########.fr        #
+#    Updated: 2023/04/29 09:29:27 by hyeondle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,16 +43,12 @@ SOURCES			=	main.c\
 
 SOURCES_MAKING	=	execute/execute.c\
 					environment/add_env.c\
-					environment/env.c\
 					environment/free_env.c\
 					environment/get_env_key.c\
 					environment/get_env_value.c\
 					environment/init_env.c\
 					environment/remove_env.c\
 					environment/update_env.c\
-					environment/env_to_str/find_key_and_get_env_value.c\
-					environment/env_to_str/get_env_to_str.c\
-					environment/env_to_str/split_and_join.c\
 					environment/remove_env_envp.c\
 					environment/add_env_envp.c\
 					builtins/echo/ft_echo.c\
@@ -74,6 +70,7 @@ SOURCES_MAKING	=	execute/execute.c\
 					tokenize/token_split/utils/over_2_delims_i.c\
 					environment/convert_env_to_str/convertion.c\
 					input/del_quotes.c\
+					environment/get_str.c\
 
 SOURCES_HD		=	../../hyejeong/deque.c\
 					../../hyejeong/exec.c\

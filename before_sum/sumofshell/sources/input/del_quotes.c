@@ -6,11 +6,28 @@
 /*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 19:41:58 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/04/29 08:56:39 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/04/29 09:33:55 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+static int	quote_change(t_quote *quote, char c)
+{
+	if (c == '\'' || c == '\"')
+	{
+		if (c == '\'' && *quote == SINGLE)
+			*quote = NONE;
+		else if (c == '\'' && *quote == NONE)
+			*quote = SINGLE;
+		else if (c == '\"' && *quote == DOUBLE)
+			*quote = NONE;
+		else if (c == '\"' && *quote == NONE)
+			*quote = DOUBLE;
+		return (1);
+	}
+	return (0);
+}
 
 static int	quote_check(char *str)
 {
@@ -23,26 +40,8 @@ static int	quote_check(char *str)
 	quote = NONE;
 	while (str[i])
 	{
-		if (str[i] == '\'' && quote == SINGLE)
-		{
-			quote = NONE;
+		if (quote_change(&quote, str[i]))
 			j++;
-		}
-		else if (str[i] == '\'' && quote == NONE)
-		{
-			quote = SINGLE;
-			j++;
-		}
-		else if (str[i] == '\"' && quote == DOUBLE)
-		{
-			quote = NONE;
-			j++;
-		}
-		else if (str[i] == '\"' && quote == NONE)
-		{
-			quote = DOUBLE;
-			j++;
-		}
 		i++;
 	}
 	return (j);
@@ -62,14 +61,8 @@ char	*del_quotes(t_setting **set, char *str)
 	quote = NONE;
 	while (str[i])
 	{
-		if (str[i] == '\'' && quote == SINGLE)
-			quote = NONE;
-		else if (str[i] == '\'' && quote == NONE)
-			quote = SINGLE;
-		else if (str[i] == '\"' && quote == DOUBLE)
-			quote = NONE;
-		else if (str[i] == '\"' && quote == NONE)
-			quote = DOUBLE;
+		if (quote_change(&quote, str[i]))
+			continue ;
 		else
 		{
 			temp[j] = str[i];

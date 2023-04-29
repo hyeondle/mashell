@@ -6,7 +6,7 @@
 /*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 03:53:58 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/04/29 08:57:32 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/04/29 09:19:29 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,6 @@ void	init_history(t_setting **setting)
 	if (fd == -1)
 		return ;
 	str = get_next_line(fd);
-	if (!str)
-		return ;
 	(*setting)->l_history = empty_history();
 	if (!(*setting)->l_history)
 		return ;
