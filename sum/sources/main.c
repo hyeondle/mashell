@@ -6,7 +6,7 @@
 /*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 23:53:07 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/04/29 09:08:16 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/04/29 11:49:02 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	main(int argc, char **argv, char **envp)
 			break ;
 	}
 	save_history(&set);
-	return (0);
+	return (set->last_exit_status);
 }
 
 /*

@@ -6,7 +6,7 @@
 #    By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/14 15:17:23 by hyeondle          #+#    #+#              #
-#    Updated: 2023/04/29 09:29:27 by hyeondle         ###   ########.fr        #
+#    Updated: 2023/04/29 10:46:44 by hyeondle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,19 +71,15 @@ SOURCES_MAKING	=	execute/execute.c\
 					environment/convert_env_to_str/convertion.c\
 					input/del_quotes.c\
 					environment/get_str.c\
-
-SOURCES_HD		=	../../hyejeong/deque.c\
-					../../hyejeong/exec.c\
-					../../hyejeong/heredoc.c\
-					../../hyejeong/heredoc2.c\
-					../../hyejeong/node.c\
-					../../hyejeong/redir.c\
-					../../hyejeong/run.c\
-					../../hyejeong/run2.c\
-					../../hyejeong/utils.c\
-
-INCD_HD			=	../../hyejeong/
-
+					process/deque.c\
+					process/exec.c\
+					process/heredoc.c\
+					process/heredoc2.c\
+					process/node.c\
+					process/redir.c\
+					process/run.c\
+					process/run2.c\
+					process/utils.c\
 
 SOURCE			=	$(addprefix $(SOURCE_DIR), $(SOURCES))
 SOURCE_N		=	$(addprefix $(SOURCE_DIR), $(SOURCES_MAKING))
@@ -103,7 +99,7 @@ RM				=	rm -f
 RM_OBJECT		=	rm -rf $(OBJECT)
 
 .c.o			:
-					$(CC) -g -fsanitize=address -I $(HEADER_DIR) -I $(INCD_HD) -I/goinfre/hyeondle/.brew/opt/readline/include -c  $< -o $(<:.c=.o)
+					$(CC) -g -fsanitize=address -I $(HEADER_DIR) -I/goinfre/hyeondle/.brew/opt/readline/include -c  $< -o $(<:.c=.o)
 
 all				:	$(NAME)
 
@@ -111,7 +107,7 @@ $(LIBFT)		:
 					make -C $(LIBFT_DIR)
 
 $(NAME)			:	$(OBJECT) $(LIBFT) $(READLINE)
-					$(CC) -g -fsanitize=address -I $(HEADER_DIR) -I $(INCD_HD) $(OBJECT) $(READLINE_FLAG) $(LIBFT_FLAG) -o $(NAME)
+					$(CC) -g -fsanitize=address -I $(HEADER_DIR) $(OBJECT) $(READLINE_FLAG) $(LIBFT_FLAG) -o $(NAME)
 
 clean			:
 					$(RM_OBJECT)

@@ -6,7 +6,7 @@
 /*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 19:41:58 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/04/29 09:33:55 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/04/29 11:09:22 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,10 @@ char	*del_quotes(t_setting **set, char *str)
 	while (str[i])
 	{
 		if (quote_change(&quote, str[i]))
+		{
+			i++;
 			continue ;
+		}
 		else
 		{
 			temp[j] = str[i];
