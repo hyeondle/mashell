@@ -6,7 +6,7 @@
 /*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 23:53:34 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/04/29 09:07:07 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/04/29 10:35:32 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,48 +46,12 @@ fcntl.h		=	open, read, close
 # include <readline/readline.h>
 # include <readline/history.h>
 # include "../../../hyejeong/pipex.h"
+# include "./structs.h"
 
 # define HISTORY_FILE	".minishell_history"
 # ifndef HISTORY_SIZE
 #  define HISTORY_SIZE	1024
 # endif
-
-/*		typedef			*/
-
-typedef enum e_quote
-{
-	NONE,
-	SINGLE,
-	DOUBLE
-}	t_quote;
-
-typedef struct s_history
-{
-	char				*history;
-	struct s_history	*next;
-}						t_history;
-
-typedef struct s_env
-{
-	char	*key;
-	char	*value;
-}			t_env;
-
-typedef struct s_env_list
-{
-	t_env				env;
-	struct s_env_list	*next;
-}						t_env_list;
-
-typedef struct s_setting
-{
-	int				exit;
-	int				last_exit_status;
-	char			**envp;
-	t_env_list		*env_list;
-	t_history		*s_history;
-	t_history		*l_history;
-}				t_setting;
 
 /*			actors				*/
 void	operation(char *input, t_setting **set);

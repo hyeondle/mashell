@@ -1,6 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   heredoc.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/29 10:05:43 by hyeondle          #+#    #+#             */
+/*   Updated: 2023/04/29 10:08:41 by hyeondle         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pipex.h"
-
-
 
 void	get_heredoc(t_heredoc *hdoc)
 {
@@ -24,8 +34,9 @@ void	parsing_heredoc(char **arg, t_heredoc *hdoc)
 	{
 		if (ft_strcmp(arg[i], "<<") == 0)
 		{
-			hdoc->terminators = append_str(hdoc->terminators, arg[i+1]);
-			hdoc->filename_temp = append_str(hdoc->filename_temp, ft_strjoin("./.here_doc", ft_itoa(hdoc->size_heredoc)));
+			hdoc->terminators = append_str(hdoc->terminators, arg[i + 1]);
+			hdoc->filename_temp = append_str(hdoc->filename_temp, \
+			ft_strjoin("./.here_doc", ft_itoa(hdoc->size_heredoc)));
 			hdoc->size_heredoc++;
 		}
 		i++;

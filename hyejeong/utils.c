@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/29 10:05:54 by hyeondle          #+#    #+#             */
+/*   Updated: 2023/04/29 10:16:34 by hyeondle         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pipex.h"
 
 void	ft_p_error(char *str)
@@ -41,7 +53,7 @@ char	**append_str(char **arg, char *str)
 	i = 0;
 	while (i < size)
 	{
-		new_arr[i] = (char*)malloc(ft_strlen(arg[i]) + 1);
+		new_arr[i] = (char *)malloc(ft_strlen(arg[i]) + 1);
 		ft_strlcpy(new_arr[i], arg[i], ft_strlen(arg[i]) + 1);
 		i++;
 	}
@@ -53,4 +65,3 @@ char	**append_str(char **arg, char *str)
 		free_2d_array(arg);
 	return (new_arr);
 }
-

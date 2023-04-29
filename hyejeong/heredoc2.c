@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   heredoc2.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/29 10:05:44 by hyeondle          #+#    #+#             */
+/*   Updated: 2023/04/29 10:16:55 by hyeondle         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pipex.h"
 
 void	cnt_heredoc_in_node(t_deque *deque)
@@ -19,7 +31,6 @@ void	cnt_heredoc_in_node(t_deque *deque)
 	}
 }
 
-
 void	distribute_heredoc(t_deque *deque, t_heredoc *hdoc)
 {
 	t_node	*node;
@@ -33,14 +44,14 @@ void	distribute_heredoc(t_deque *deque, t_heredoc *hdoc)
 		i = 0;
 		while (i < node->num_heredoc)
 		{
-			node->filename_heredoc = append_str(node->filename_heredoc, hdoc->filename_temp[idx_hd]);
+			node->filename_heredoc = append_str(node->filename_heredoc, \
+			hdoc->filename_temp[idx_hd]);
 			idx_hd++;
 			i++;
 		}
 		node = node->next;
 	}
 }
-
 
 int	ft_here_doc(t_heredoc *hdoc, int idx)
 {

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   run.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/29 10:05:52 by hyeondle          #+#    #+#             */
+/*   Updated: 2023/04/29 10:28:48 by hyeondle         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pipex.h"
 
 void	unlink_temp_file(t_heredoc *hdoc)
@@ -56,9 +68,10 @@ t_deque	*parsing_pipe(char **arg)
 	i = 0;
 	while (arg[i])
 	{
-		if ((ft_strcmp(arg[i], "<") == 0) || (ft_strcmp(arg[i], ">") == 0) || (ft_strcmp(arg[i], "<<") == 0) || (ft_strcmp(arg[i], ">>") == 0))
+		if ((ft_strcmp(arg[i], "<") == 0) || (ft_strcmp(arg[i], ">") == 0) \
+		|| (ft_strcmp(arg[i], "<<") == 0) || (ft_strcmp(arg[i], ">>") == 0))
 		{
-			node->file_redir = append_str(node->file_redir, arg[i+1]);
+			node->file_redir = append_str(node->file_redir, arg[i + 1]);
 			node->order_redir = append_str(node->order_redir, arg[i]);
 			i += 2;
 		}
@@ -67,14 +80,13 @@ t_deque	*parsing_pipe(char **arg)
 			node = push_init_new_node(deque);
 			i += 1;
 		}
-		else	//커맨드인 경우
+		else
 			node->cmd = append_str(node->cmd, arg[i++]);
 	}
 	return (deque);
 }
 
-
-void	run_cmd(char **arg, char **envp)
+void	run_cmd(char **arg, char **envp, t_setting **set)
 {
 	t_deque		*deque;
 	t_info		*info;
@@ -95,7 +107,6 @@ void	run_cmd(char **arg, char **envp)
 		else
 			node = parent_process(node, info);
 	}
-	ft_wait_pids(info);
+	ft_wait_pids(info, set);
 	unlink_temp_file(hdoc);
 }
-

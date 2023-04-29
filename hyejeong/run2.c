@@ -1,14 +1,24 @@
-#include "pipex.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   run2.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/29 10:05:53 by hyeondle          #+#    #+#             */
+/*   Updated: 2023/04/29 10:28:46 by hyeondle         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "pipex.h"
 
 void	check_pipe_redir(t_node *node, t_info *info)
 {
-	if(node->prev)
+	if (node->prev)
 		dup2(info->pipes[node->idx - 1][READ], STDIN_FILENO);
 	if (node->next)
 		dup2(info->pipes[node->idx][WRITE], STDOUT_FILENO);
 }
-
 
 void	check_file_redir(t_node *node, t_info *info)
 {
@@ -52,8 +62,7 @@ t_node	*parent_process(t_node *node, t_info *info)
 	return (node->next);
 }
 
-
-int	ft_wait_pids(t_info *info)
+int	ft_wait_pids(t_info *info, t_setting **set)
 {
 	int	i;
 	int	status;
@@ -65,11 +74,11 @@ int	ft_wait_pids(t_info *info)
 		waitpid(info->arr_pid[i], &status, 0);
 		if (WIFEXITED(status))
 		{
-			exit_status = WEXITSTATUS(status);
+			(*set)->last_exit_status = WEXITSTATUS(status);
 		}
 		else if (WIFSIGNALED(status))
 		{
-			exit_status = WTERMSIG(status);
+			(*set)->last_exit_status = WTERMSIG(status);
 		}
 		i++;
 	}

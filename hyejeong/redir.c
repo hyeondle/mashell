@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   redir.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/29 10:05:50 by hyeondle          #+#    #+#             */
+/*   Updated: 2023/04/29 10:11:36 by hyeondle         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pipex.h"
 
 void	redir_infile(t_node *node, int i)
@@ -18,7 +30,7 @@ void	redir_outfile_ow(t_node *node, int i)
 {
 	int	fd_out;
 
-	fd_out =  open(node->file_redir[i], O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	fd_out = open(node->file_redir[i], O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (fd_out < 0)
 	{
 		perror("open");
@@ -32,7 +44,7 @@ void	redir_outfile_apd(t_node *node, int i)
 {
 	int	fd_out;
 
-	fd_out =  open(node->file_redir[i], O_WRONLY | O_CREAT | O_APPEND, 0644);
+	fd_out = open(node->file_redir[i], O_WRONLY | O_CREAT | O_APPEND, 0644);
 	if (fd_out < 0)
 	{
 		perror("open");
@@ -55,5 +67,3 @@ void	redir_heredoc(t_node *node, int i, int idx_hd_in_node)
 	dup2(fd_in, STDIN_FILENO);
 	close(fd_in);
 }
-
-
