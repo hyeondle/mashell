@@ -6,7 +6,7 @@
 /*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 23:53:07 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/04/29 11:49:02 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/04/29 11:52:17 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,3 @@ int	main(int argc, char **argv, char **envp)
 	save_history(&set);
 	return (set->last_exit_status);
 }
-
-/*
-환경변수 업데이트
-환경변수 문자 및 숫자만 취급하도록 (. 같은경우 무시))
-*/
