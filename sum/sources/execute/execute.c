@@ -6,7 +6,7 @@
 /*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:43:19 by Linsio            #+#    #+#             */
-/*   Updated: 2023/04/29 10:30:24 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/04/29 12:26:20 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,5 +95,7 @@ int	execute(char **inputs, t_setting **set)
 		ft_unset(set, inputs);
 	else
 		run_cmd(inputs, (*set)->envp, set);
+	rl_catch_signals = 0;
+	init_signalaction();
 	return ((*set)->last_exit_status);
 }

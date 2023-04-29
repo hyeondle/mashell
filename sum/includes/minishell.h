@@ -6,7 +6,7 @@
 /*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 23:53:34 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/04/29 10:42:43 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/04/29 12:28:31 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,6 @@ char	*get_env_value(t_env_list *env, const char *key, t_setting **set);
 char	*get_env_key(char *str, int i);
 int		update_env(t_env_list *env, const char *key, const char *new_value);
 void	free_env(t_env_list	*env);
-//		env_to_str		//
-char	*find_key_and_get_env_value(char *str, int i, t_setting **set);
-char	*get_env_to_str(t_setting **set, char *str);
-//	temp
-char	*split_and_join(char *p_str, int i, char *value);
-int		get_third_size(char *str);
 
 /*			input				*/
 char	*get_input(t_setting **set);
@@ -91,7 +85,6 @@ char	**split_by_case(char **str, int i, int k);
 char	**over_2_delims(char **str, int i, int k);
 //			case				//
 char	**go_split(char **str, int i, int k);
-char	**token_split_case_alone(char **str, int i, int k);
 char	**token_split_case_no_back(char **str, int i, int k);
 char	**token_split_case_no_front(char **str, int i, int k);
 char	**go_split_over_delim(char **str, int i, int k, int j);
@@ -115,13 +108,12 @@ int		ft_unset(t_setting **set, char **inputs);
 int		ft_pwd(void);
 int		ft_cd(char **inputs);
 
-void	test_ft(char **argv, char **envp, t_setting **set);
-
 /*temp*/
 char	*convertion(t_setting **set, char *str);
 char	*del_quotes(t_setting **set, char *str);
 
 char	*get_key(const char *str);
 char	*get_value(const char *str);
+void	init_signalaction(void);
 
 #endif

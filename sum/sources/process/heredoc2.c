@@ -6,7 +6,7 @@
 /*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 10:05:44 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/04/29 10:44:34 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/04/29 12:35:13 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,30 @@ void	distribute_heredoc(t_deque *deque, t_heredoc *hdoc)
 	}
 }
 
+static void	handler_hd(int sig, siginfot_t *info, void *oldsiga)
+{
+	
+}
+
+static void init_signalaction_hd(void)
+{
+	struct sigaction	act;
+
+	rl_catch_signals = 1;
+	act.sa_flags = SA_SIGINFO;
+	act.sa_sigaction = handler_hd;
+	sigemptyset(&act.sa_mask);
+	sigaction(SIGINT, &act, NULL);
+	//추가 수정
+}
+
 int	ft_here_doc(t_heredoc *hdoc, int idx)
 {
 	char	*str;
 	pid_t	pid;
 	int		here_fd;
 
+	init_signalaction_hd();
 	here_fd = open(hdoc->filename_temp[idx], O_RDWR | O_CREAT | O_TRUNC, 0666);
 	pid = fork();
 	if (pid < 0)
