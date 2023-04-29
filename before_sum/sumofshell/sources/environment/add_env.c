@@ -6,55 +6,14 @@
 /*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 00:40:37 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/04/29 07:10:43 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/04/29 09:04:51 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-char	*get_value(const char *str)
-{
-	char	*value;
-	int		i;
-	int		j;
-
-	i = ft_strnlen(str, '=');
-	value = (char *)malloc(sizeof(char) * (ft_strlen(str) - i + 1));
-	if (!value)
-		return (NULL);
-	i++;
-	j = 0;
-	while (str[i])
-	{
-		value[j] = str[i];
-		j++;
-		i++;
-	}
-	value[j] = '\0';
-	return (value);
-}
-
-char	*get_key(const char *str)
-{
-	char	*key;
-	int		i;
-	int		j;
-
-	i = ft_strnlen(str, '=');
-	key = (char *)malloc(sizeof(char) * (i + 1));
-	if (!key)
-		return (NULL);
-	j = 0;
-	while (j < i)
-	{
-		key[j] = str[j];
-		j++;
-	}
-	key[j] = '\0';
-	return (key);
-}
-
-static void	go_update_env(t_env_list **env, const char *key_value_pair, t_setting **set)
+static void	go_update_env(t_env_list **env, const char *key_value_pair, \
+							t_setting **set)
 {
 	char	*value;
 	char	*key;
@@ -90,7 +49,8 @@ int	is_key_valid(const char *str)
 	i = 0;
 	while (key[i])
 	{
-		if (!((key[i] > 47 && key[i] < 58) || (key[i] > 64 && key[i] < 91) || (key[i] > 96 && key[i] < 123)))
+		if (!((key[i] > 47 && key[i] < 58) || (key[i] > 64 && key[i] < 91) \
+		|| (key[i] > 96 && key[i] < 123)))
 		{
 			printf("export: %s: not a valid identifier\n", str);
 			free(key);
@@ -102,7 +62,8 @@ int	is_key_valid(const char *str)
 	return (0);
 }
 
-static int	already_exist(t_env_list **env, const char *key_value_pair, t_setting **set)
+static int	already_exist(t_env_list **env, const char *key_value_pair, \
+						t_setting **set)
 {
 	t_env_list	*current;
 	char		*key;

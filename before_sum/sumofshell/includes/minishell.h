@@ -6,7 +6,7 @@
 /*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 23:53:34 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/04/29 07:59:02 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/04/29 09:07:07 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ fcntl.h		=	open, read, close
 # include <readline/history.h>
 # include "../../../hyejeong/pipex.h"
 
-
 # define HISTORY_FILE	".minishell_history"
 # ifndef HISTORY_SIZE
 #  define HISTORY_SIZE	1024
@@ -62,7 +61,7 @@ typedef enum e_quote
 	DOUBLE
 }	t_quote;
 
-typedef	struct s_history
+typedef struct s_history
 {
 	char				*history;
 	struct s_history	*next;
@@ -164,7 +163,6 @@ int		ft_export(t_setting **set, char **inputs);
 int		ft_unset(t_setting **set, char **inputs);
 int		ft_pwd(void);
 int		ft_cd(char **inputs);
-
 
 void	test_ft(char **argv, char **envp, t_setting **set);
 

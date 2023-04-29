@@ -6,7 +6,7 @@
 /*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 23:53:07 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/04/29 07:58:43 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/04/29 09:08:16 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	handler(int sig, siginfo_t *info, void *oldsiga)
 
 static void	init_signalaction(void)
 {
-	struct sigaction    act;
+	struct sigaction	act;
 
 	act.sa_flags = SA_SIGINFO;
 	act.sa_sigaction = handler;

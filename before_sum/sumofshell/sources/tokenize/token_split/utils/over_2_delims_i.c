@@ -6,7 +6,7 @@
 /*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 14:50:54 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/04/28 15:30:07 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/04/29 08:54:18 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	over_2_delims_i(char **str, int i, int k)
 {
-	int j;
+	int	j;
 
 	j = k;
 	if (k == 0)

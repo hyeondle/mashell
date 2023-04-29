@@ -1,41 +1,55 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_env_key.c                                      :+:      :+:    :+:   */
+/*   get_str.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/09 04:30:19 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/04/29 09:04:44 by hyeondle         ###   ########.fr       */
+/*   Created: 2023/04/29 09:04:05 by hyeondle          #+#    #+#             */
+/*   Updated: 2023/04/29 09:04:37 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-char	*get_env_key(char *str, int i)
+char	*get_value(const char *str)
 {
-	int		l;
-	int		k;
+	char	*value;
+	int		i;
 	int		j;
-	char	*key;
 
-	k = i + 1;
+	i = ft_strnlen(str, '=');
+	value = (char *)malloc(sizeof(char) * (ft_strlen(str) - i + 1));
+	if (!value)
+		return (NULL);
+	i++;
 	j = 0;
-	while (str[k] != '$' && str[k] != '\0' && str[k] != '\"' \
-	&& str[k] != ' ' && str[k] != '\'' && ((str[k] > 47 && str[k] < 58) \
-	|| (str[k] > 64 && str[k] < 91) || (str[k] > 96 && str[k] < 123)))
-		k++;
-	if (str[i + 1] == '?')
-		k = i + 2;
-	key = (char *)malloc(sizeof(char) * (k - i));
+	while (str[i])
+	{
+		value[j] = str[i];
+		j++;
+		i++;
+	}
+	value[j] = '\0';
+	return (value);
+}
+
+char	*get_key(const char *str)
+{
+	char	*key;
+	int		i;
+	int		j;
+
+	i = ft_strnlen(str, '=');
+	key = (char *)malloc(sizeof(char) * (i + 1));
 	if (!key)
 		return (NULL);
-	while (i < k)
+	j = 0;
+	while (j < i)
 	{
-		key[j] = str[i + 1];
-		i++;
+		key[j] = str[j];
 		j++;
 	}
-	key[j - 1] = '\0';
+	key[j] = '\0';
 	return (key);
 }

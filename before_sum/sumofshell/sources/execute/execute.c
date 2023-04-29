@@ -6,12 +6,12 @@
 /*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:43:19 by Linsio            #+#    #+#             */
-/*   Updated: 2023/04/28 21:20:59 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/04/29 09:00:02 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-//각종 에러 및 예외 처리 할 것, 빌트인 안이 아니면 execute실행하도록 함수 하나 더 추가
+
 static char	*get_path(char **inputs, t_setting **set, char **e_path)
 {
 	int		i;
@@ -19,11 +19,13 @@ static char	*get_path(char **inputs, t_setting **set, char **e_path)
 
 	i = 0;
 	if (inputs[0][0] && inputs[0][1])
+	{
 		if (inputs[0][0] == '.' && inputs[0][1] == '/')
 		{
 			exec = ft_strdup(inputs[0]);
 			return (exec);
 		}
+	}
 	while (e_path[i])
 	{
 		exec = ft_strjoin(e_path[i], "/");
@@ -56,7 +58,7 @@ static int	isexecute(char **inputs, t_setting **set)
 	char	**e_path;
 	char	*exec;
 
-	path = get_env_value((*set)->env_list, "PATH");
+	path = get_env_value((*set)->env_list, "PATH", set);
 	if (!path)
 		return (-1);
 	e_path = ft_split(path, ':');
@@ -85,10 +87,6 @@ int	execute(char **inputs, t_setting **set)
 	o = inputs[0];
 	if (o == NULL)
 		return (1);
-	// if (execute_check(o))
-	// 	flag = go_execute(inputs, set, o);
-	// else
-	// {
 	if (ft_strcmp(o, "exit") == 0)
 		ft_exit(inputs, set);
 	else if (ft_strcmp(o, "export") == 0)
@@ -97,6 +95,5 @@ int	execute(char **inputs, t_setting **set)
 		ft_unset(set, inputs);
 	else
 		run_cmd(inputs, (*set)->envp);
-	// }
-	return ((*set)->child_exit_status);
+	return ((*set)->last_exit_status);
 }

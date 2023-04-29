@@ -6,7 +6,7 @@
 /*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 14:13:06 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/04/28 15:32:58 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/04/29 08:55:51 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,3 @@ char	**over_2_delims(char **str, int i, int k)
 	}
 	return (temp);
 }
-

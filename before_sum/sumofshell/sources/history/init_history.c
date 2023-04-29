@@ -3,18 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init_history.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Linsio <Linsio@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 03:53:58 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/04/17 10:23:42 by Linsio           ###   ########.fr       */
+/*   Updated: 2023/04/29 08:57:32 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-//여기서 기존 히스토리를 읽어올 때, 연결리스트로 구현 하기
-//마지막 종료시에 l_history와 s_history연결해서
-//.minishell_history에 저장해야함
-static t_history	*empty_history()
+
+static t_history	*empty_history(void)
 {
 	t_history	*hist;
 
@@ -68,7 +66,7 @@ void	init_history(t_setting **setting)
 		i++;
 		str = get_next_line(fd);
 	}
-	temp->history = ft_strdup(""); //아니면 현재 temp free하고 지켜보기
+	temp->history = ft_strdup("");
 	temp->next = NULL;
 	close(fd);
 }
