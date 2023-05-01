@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Linsio <Linsio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 23:53:07 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/04/29 12:26:39 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/04/30 06:02:29 by Linsio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	init_signalaction(void)
 {
 	struct sigaction	act;
 
+	rl_catch_signals = 0;
 	act.sa_flags = SA_SIGINFO;
 	act.sa_sigaction = handler;
 	sigemptyset(&act.sa_mask);
@@ -48,7 +49,6 @@ static t_setting	*init_set(char **envp)
 	set->s_history = NULL;
 	init_env(envp, &set);
 	init_history(&set);
-	rl_catch_signals = 0;
 	init_signalaction();
 	return (set);
 }

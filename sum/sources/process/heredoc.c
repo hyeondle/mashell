@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Linsio <Linsio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 10:05:43 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/04/29 10:44:32 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/05/01 23:10:34 by Linsio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,23 @@ void	init_t_heredoc(t_heredoc *hdoc)
 	hdoc->size_heredoc = 0;
 }
 
+void hd_handler(int sig, siginfo_t *info, void *oldsiga)
+{
+	if (sig == SIGINT)
+		exit(0);
+}
+
+void	init_hd_sig(void)
+{
+	struct sigaction	act;
+
+	rl_catch_signals = 1;
+	act.sa_flags = SA_SIGINFO;
+	act.sa_sigaction = hd_handler;
+	sigemptyset(&act.sa_mask);
+	sigaction(SIGINT, &act, NULL);
+}
+
 t_heredoc	*do_heredoc(char **arg, t_deque *deque)
 {
 	t_heredoc	*hdoc;
@@ -57,7 +74,10 @@ t_heredoc	*do_heredoc(char **arg, t_deque *deque)
 	hdoc = malloc(sizeof(t_heredoc) * 1);
 	init_t_heredoc(hdoc);
 	parsing_heredoc(arg, hdoc);
+
+	init_hd_sig();
 	get_heredoc(hdoc);
+
 	cnt_heredoc_in_node(deque);
 	distribute_heredoc(deque, hdoc);
 	return (hdoc);
