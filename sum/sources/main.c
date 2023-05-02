@@ -6,7 +6,7 @@
 /*   By: Linsio <Linsio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 23:53:07 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/05/02 09:56:44 by Linsio           ###   ########.fr       */
+/*   Updated: 2023/05/02 10:03:08 by Linsio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	main(int argc, char **argv, char **envp)
 	while (1)
 	{
 		input = get_input(&set);
-		if (!input)
+		if (!input || forced_terminated(input))
 			break ;
 		ft_add_history(input, &set);
 		operation(input, &set);

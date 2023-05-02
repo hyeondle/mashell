@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Linsio <Linsio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 23:53:34 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/04/29 12:28:31 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/05/02 10:03:42 by Linsio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	free_env(t_env_list	*env);
 char	*get_input(t_setting **set);
 int		input_check(char *input);
 char	*check_input_add(char *additional);
+t_bool	forced_terminated(char *input);
 
 /*			execute				*/
 int		execute(char **inputs, t_setting **set);
