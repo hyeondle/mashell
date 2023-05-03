@@ -6,7 +6,7 @@
 /*   By: Linsio <Linsio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 01:33:48 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/05/03 13:01:41 by Linsio           ###   ########.fr       */
+/*   Updated: 2023/05/03 14:11:08 by Linsio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 static t_bool	forced_terminated(char *input, char *input_p)
 {
-	int i = 0;
+	int	i;
+
+	i = 0;
 	if (!input)
 	{
 		printf("unexpected EOF while looking for matching `\n");
@@ -49,9 +51,12 @@ char	*get_input(t_setting **set)
 		exit(0);
 	i = input_check(input);
 	if (i == 1)
-	{
 		printf("syntax error: unexpected end of file\n");
-		// input = ft_strjoin(input, "\n");
+	return (input);
+}
+
+/*
+// input = ft_strjoin(input, "\n");
 		// while (i)
 		// {
 		// 	input_add = readline("> ");
@@ -64,6 +69,4 @@ char	*get_input(t_setting **set)
 		// 	input = join_input(input, input_add);
 		// 	i = input_check(input);
 		// }
-	}
-	return (input);
-}
+*/

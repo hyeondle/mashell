@@ -6,7 +6,7 @@
 /*   By: Linsio <Linsio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 19:41:58 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/05/03 11:19:05 by Linsio           ###   ########.fr       */
+/*   Updated: 2023/05/03 14:11:07 by Linsio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,18 +58,13 @@ static int	quote_check(char *str)
 	return (j);
 }
 
-char	*del_quotes(t_setting **set, char *str)
+static char	*deleted_str(char *str, char *temp, t_quote quote)
 {
-	char	*temp;
-	int		i;
-	int		j;
-	t_quote	quote;
+	int	i;
+	int	j;
 
-	j = 0;
-	i = quote_check(str);
-	temp = (char *)malloc(sizeof(char) * (ft_strlen(str) - i + 1));
 	i = 0;
-	quote = NONE;
+	j = 0;
 	while (str[i])
 	{
 		if (quote_change(&quote, str[i]))
@@ -87,4 +82,18 @@ char	*del_quotes(t_setting **set, char *str)
 	temp[j] = '\0';
 	free(str);
 	return (temp);
+}
+
+char	*del_quotes(t_setting **set, char *str)
+{
+	char	*temp;
+	int		i;
+	int		j;
+	t_quote	quote;
+
+	j = 0;
+	i = quote_check(str);
+	temp = (char *)malloc(sizeof(char) * (ft_strlen(str) - i + 1));
+	quote = NONE;
+	return (deleted_str(str, temp, quote));
 }

@@ -6,7 +6,7 @@
 /*   By: Linsio <Linsio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 01:40:58 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/05/03 12:03:48 by Linsio           ###   ########.fr       */
+/*   Updated: 2023/05/03 14:04:09 by Linsio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	quote_change(t_quote *quote, char c)
 	}
 }
 
-static void quote_change_none(t_quote *quote, char c)
+static void	quote_change_none(t_quote *quote, char c)
 {
 	if (c == '\'')
 		*quote = SINGLE;
