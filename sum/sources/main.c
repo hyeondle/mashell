@@ -6,7 +6,7 @@
 /*   By: Linsio <Linsio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 23:53:07 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/05/03 11:23:31 by Linsio           ###   ########.fr       */
+/*   Updated: 2023/05/03 12:16:29 by Linsio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static t_setting	*init_set(char **envp)
 	return (set);
 }
 
-int	unclosed_quote(char *input)
+static int	unclosed_quote(char *input)
 {
 	int		i;
 	t_quote	quote;
