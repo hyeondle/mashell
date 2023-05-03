@@ -6,13 +6,11 @@
 /*   By: Linsio <Linsio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 01:33:48 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/05/03 12:16:28 by Linsio           ###   ########.fr       */
+/*   Updated: 2023/05/03 12:29:13 by Linsio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-
 
 static t_bool	forced_terminated(char *input, char *input_p)
 {

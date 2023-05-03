@@ -6,7 +6,7 @@
 /*   By: Linsio <Linsio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:43:19 by Linsio            #+#    #+#             */
-/*   Updated: 2023/04/30 06:02:36 by Linsio           ###   ########.fr       */
+/*   Updated: 2023/05/03 12:34:48 by Linsio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,8 @@ int	execute(char **inputs, t_setting **set)
 		ft_export(set, inputs);
 	else if (ft_strcmp(o, "unset") == 0)
 		ft_unset(set, inputs);
+	else if (ft_strcmp(o, "cd") == 0)
+		ft_cd(inputs);
 	else
 		run_cmd(inputs, (*set)->envp, set);
 	init_signalaction();
