@@ -6,17 +6,36 @@
 /*   By: Linsio <Linsio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 01:33:48 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/05/02 10:06:24 by Linsio           ###   ########.fr       */
+/*   Updated: 2023/05/03 12:03:47 by Linsio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//get whole input
 #include "../../includes/minishell.h"
 
-t_bool	forced_terminated(char *input)
+static t_bool	forced_terminated(char *input, char *input_p)
 {
-	// 여기서 따옴표 닫히지 않은채로 종료된 것이 확인 될 경우 에러메시지를 출력하도록 설정
-	// 그 후 어떻게 종료되는지 확인할 것. "ctrl+d"로 인한 EOF가 들어올 경우 에러가남
+	int i = 0;
+	if (!input)
+	{
+		printf("unexpected EOF while looking for matching `\n");
+		printf("syntax error: unexpected end of file\n");
+		free(input);
+		input = NULL;
+		return (0);
+	}
+	return (1);
+}
+
+char	*join_input(char *input, char *input_add)
+{
+	char	*temp;
+
+	temp = input;
+	input = ft_strjoin(input, input_add);
+	input = check_input_add(input);
+	free(input_add);
+	free(temp);
+	return (input);
 }
 
 char	*get_input(t_setting **set)
@@ -27,7 +46,7 @@ char	*get_input(t_setting **set)
 
 	input = readline("minishell> ");
 	if (!input)
-		ft_exit(NULL, set);
+		exit(0);
 	i = input_check(input);
 	if (i == 1)
 	{
@@ -36,10 +55,12 @@ char	*get_input(t_setting **set)
 		{
 			input_add = readline("> ");
 			if (!input_add)
-				break ;
-			input_add = check_input_add(input_add);
-			input = ft_strjoin(input, input_add);
-			free(input_add);
+			{
+				i = forced_terminated(input_add, input);
+				if (i == 0)
+					break;
+			}
+			input = join_input(input, input_add);
 			i = input_check(input);
 		}
 	}

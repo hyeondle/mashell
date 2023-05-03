@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   del_quotes.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Linsio <Linsio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 19:41:58 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/04/29 11:09:22 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/05/03 11:19:05 by Linsio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,25 @@ static int	quote_change(t_quote *quote, char c)
 	if (c == '\'' || c == '\"')
 	{
 		if (c == '\'' && *quote == SINGLE)
+		{
 			*quote = NONE;
+			return (1);
+		}
 		else if (c == '\'' && *quote == NONE)
+		{
 			*quote = SINGLE;
+			return (1);
+		}
 		else if (c == '\"' && *quote == DOUBLE)
+		{
 			*quote = NONE;
+			return (1);
+		}
 		else if (c == '\"' && *quote == NONE)
+		{
 			*quote = DOUBLE;
-		return (1);
+			return (1);
+		}
 	}
 	return (0);
 }

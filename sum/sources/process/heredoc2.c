@@ -6,7 +6,7 @@
 /*   By: Linsio <Linsio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 10:05:44 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/05/02 09:56:44 by Linsio           ###   ########.fr       */
+/*   Updated: 2023/05/03 08:46:36 by Linsio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,10 @@ void	distribute_heredoc(t_deque *deque, t_heredoc *hdoc)
 	}
 }
 //여기서부터
-void	sig1(void)
+int	sig1(void)
 {
 	exit(0);
+	return (0);
 }
 static void	handler(int sig, siginfo_t *info, void *oldsiga)
 {

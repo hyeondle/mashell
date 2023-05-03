@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_check.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Linsio <Linsio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 01:40:58 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/04/29 08:56:23 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/05/03 12:03:48 by Linsio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,14 @@ static void	quote_change(t_quote *quote, char c)
 	}
 }
 
+static void quote_change_none(t_quote *quote, char c)
+{
+	if (c == '\'')
+		*quote = SINGLE;
+	else if (c == '\"')
+		*quote = DOUBLE;
+}
+
 int	input_check(char *input)
 {
 	t_quote	quote;
@@ -39,12 +47,7 @@ int	input_check(char *input)
 	while (input[i])
 	{
 		if (quote == NONE)
-		{
-			if (input[i] == '\'')
-				quote = SINGLE;
-			if (input[i] == '\"')
-				quote = DOUBLE;
-		}
+			quote_change_none(&quote, input[i]);
 		else
 			quote_change(&quote, input[i]);
 		i++;

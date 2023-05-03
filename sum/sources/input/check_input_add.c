@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_input_add.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Linsio <Linsio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 01:57:18 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/04/08 02:01:01 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/05/03 12:02:17 by Linsio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*check_input_add(char *additional)
 	char	*temp;
 
 	i = input_check(additional);
-	if (i == 0)
+	if (i == 1)
 		temp = ft_strjoin(additional, "\n");
 	else
 		return (additional);

@@ -6,7 +6,7 @@
 /*   By: Linsio <Linsio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 23:53:07 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/05/02 10:03:08 by Linsio           ###   ########.fr       */
+/*   Updated: 2023/05/03 11:23:31 by Linsio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,34 @@ static t_setting	*init_set(char **envp)
 	return (set);
 }
 
+int	unclosed_quote(char *input)
+{
+	int		i;
+	t_quote	quote;
+
+	i = 0;
+	quote = NONE;
+	while (input[i])
+	{
+		if (quote == NONE && input[i] == '\'')
+			quote = SINGLE;
+		else if (quote == NONE && input[i] == '\"')
+			quote = DOUBLE;
+		else if (quote == DOUBLE && input[i] == '\"')
+			quote = NONE;
+		else if (quote == SINGLE && input[i] == '\'')
+			quote = NONE;
+		i++;
+	}
+	if (quote != NONE)
+	{
+		free(input);
+		input = NULL;
+		return (1);
+	}
+	return (0);
+}
+
 int	main(int argc, char **argv, char **envp)
 {
 	t_setting	*set;
@@ -67,8 +95,10 @@ int	main(int argc, char **argv, char **envp)
 	while (1)
 	{
 		input = get_input(&set);
-		if (!input || forced_terminated(input))
-			break ;
+		if (!input)
+			exit(0);
+		if (unclosed_quote(input))
+			continue ;
 		ft_add_history(input, &set);
 		operation(input, &set);
 		free(input);
