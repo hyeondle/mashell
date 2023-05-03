@@ -6,7 +6,7 @@
 /*   By: Linsio <Linsio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 23:53:07 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/05/03 13:00:57 by Linsio           ###   ########.fr       */
+/*   Updated: 2023/05/03 13:02:24 by Linsio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,10 +95,7 @@ int	main(int argc, char **argv, char **envp)
 		if (!input)
 			exit(0);
 		if (unclosed_quote(input))
-		{
-			free(input);
 			continue ;
-		}
 		ft_add_history(input, &set);
 		operation(input, &set);
 		free(input);

@@ -6,7 +6,7 @@
 /*   By: Linsio <Linsio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 01:33:48 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/05/03 12:29:13 by Linsio           ###   ########.fr       */
+/*   Updated: 2023/05/03 13:01:41 by Linsio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,19 +50,20 @@ char	*get_input(t_setting **set)
 	i = input_check(input);
 	if (i == 1)
 	{
-		input = ft_strjoin(input, "\n");
-		while (i)
-		{
-			input_add = readline("> ");
-			if (!input_add)
-			{
-				i = forced_terminated(input_add, input);
-				if (i == 0)
-					break;
-			}
-			input = join_input(input, input_add);
-			i = input_check(input);
-		}
+		printf("syntax error: unexpected end of file\n");
+		// input = ft_strjoin(input, "\n");
+		// while (i)
+		// {
+		// 	input_add = readline("> ");
+		// 	if (!input_add)
+		// 	{
+		// 		i = forced_terminated(input_add, input);
+		// 		if (i == 0)
+		// 			break;
+		// 	}
+		// 	input = join_input(input, input_add);
+		// 	i = input_check(input);
+		// }
 	}
 	return (input);
 }
