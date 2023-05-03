@@ -6,7 +6,7 @@
 /*   By: Linsio <Linsio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 23:53:07 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/05/03 12:29:13 by Linsio           ###   ########.fr       */
+/*   Updated: 2023/05/03 13:00:57 by Linsio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static t_setting	*init_set(char **envp)
 
 	set = (t_setting *)malloc(sizeof(t_setting));
 	if (!set)
-		return (NULL);
+		exit(1);
 	set->last_exit_status = 0;
 	set->l_history = NULL;
 	set->s_history = NULL;
@@ -87,10 +87,7 @@ int	main(int argc, char **argv, char **envp)
 	char		*input;
 	int			i;
 
-	printf("shellstart\n");
 	set = init_set(envp);
-	if (!set)
-		return (1);
 	i = 0;
 	while (1)
 	{
@@ -98,7 +95,10 @@ int	main(int argc, char **argv, char **envp)
 		if (!input)
 			exit(0);
 		if (unclosed_quote(input))
+		{
+			free(input);
 			continue ;
+		}
 		ft_add_history(input, &set);
 		operation(input, &set);
 		free(input);
