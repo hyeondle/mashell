@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   run.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Linsio <Linsio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 10:05:52 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/04/29 10:44:42 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/05/04 12:41:31 by Linsio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,24 @@ t_deque	*parsing_pipe(char **arg)
 	}
 	return (deque);
 }
+static void	handler2(int sig, siginfo_t *info, void *oldsiga)
+{
+	if (sig == SIGQUIT)
+		rl_redisplay();
+	else if (sig == SIGINT)
+	{
+		rl_replace_line("", 1);
+		rl_on_new_line();
+		printf("\n");
+		rl_redisplay();
+	}
+}
+void	init_signalaction3(void)
+{
+	rl_catch_signals = 0;
+	signal(SIGINT, handler2);
+	signal(SIGQUIT, handler2);
+}
 
 void	run_cmd(char **arg, char **envp, t_setting **set)
 {
@@ -96,6 +114,7 @@ void	run_cmd(char **arg, char **envp, t_setting **set)
 	deque = parsing_pipe(arg);
 	info = init_info(deque);
 	hdoc = do_heredoc(arg, deque);
+	init_signalaction3();
 //----------------------------------------------------
 	if (exit_status == -5)
 	{

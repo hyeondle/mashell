@@ -6,7 +6,7 @@
 /*   By: Linsio <Linsio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:43:19 by Linsio            #+#    #+#             */
-/*   Updated: 2023/05/03 12:34:48 by Linsio           ###   ########.fr       */
+/*   Updated: 2023/05/04 12:41:30 by Linsio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,5 @@ int	execute(char **inputs, t_setting **set)
 		ft_cd(inputs);
 	else
 		run_cmd(inputs, (*set)->envp, set);
-	init_signalaction();
 	return ((*set)->last_exit_status);
 }
