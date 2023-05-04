@@ -96,6 +96,8 @@ void	run_cmd(char **arg, char **envp, t_setting **set)
 	deque = parsing_pipe(arg);
 	info = init_info(deque);
 	hdoc = do_heredoc(arg, deque);
+	if (exit_status == 5)
+		return ;
 	node = deque->front;
 	while (node)
 	{

@@ -12,6 +12,7 @@
 
 #include "../../includes/pipex.h"
 
+
 void	cnt_heredoc_in_node(t_deque *deque)
 {
 	t_node	*node;
@@ -52,11 +53,12 @@ void	distribute_heredoc(t_deque *deque, t_heredoc *hdoc)
 		node = node->next;
 	}
 }
+
 //여기서부터
 int	sig1(void)
 {
-	exit(0);
-	return (0);
+	exit(5);
+	return (5);
 }
 static void	handler(int sig, siginfo_t *info, void *oldsiga)
 {
@@ -83,12 +85,57 @@ void	init_signalaction2(void)
 	sigaction(SIGQUIT, &act, NULL);
 }
 // 여기까지 다른데로 옮김
+// int	ft_here_doc(t_heredoc *hdoc, int idx)
+// {
+// 	char	*str;
+// 	pid_t	pid;
+// 	int		here_fd;
+
+// 	here_fd = open(hdoc->filename_temp[idx], O_RDWR | O_CREAT | O_TRUNC, 0666);
+// 	pid = fork();
+// 	if (pid < 0)
+// 		exit(1);
+// 	if (pid == 0)
+// 	{
+// 		rl_catch_signals = 1; // 이건 sig1함수안에 넣어도 됨
+// 		signal(SIGINT, sig1); // 이걸 .here_doc파일 비우는걸로 제작
+// 		while (1)
+// 		{
+// 			str = readline("> ");
+// 			if (!str || ft_strcmp(hdoc->terminators[idx], str) == 0)
+// 			{
+// 				if (str)
+// 					free(str);
+// 				exit(0);
+// 			}
+// 			write(here_fd, str, ft_strlen(str));
+// 			write(here_fd, "\n", 1);
+// 			free(str);
+// 		}
+// 	}
+// 	wait(NULL);
+// 	init_signalaction2(); // 이건 메인에 있는것과 같음. 그냥 이 함수말고 외부함수에서 한번 더 호출해도 됨
+// 	return (here_fd);
+// }
+
+
+// void	handle_execute_exit_status(int status)
+// {
+// 	if (WIFEXITED(status))
+// 		exit_status = WEXITSTATUS(status);
+// 	else if (WIFSIGNALED(status))
+// 		exit_status = WTERMSIG(status) + 128;
+// }
+
+
 int	ft_here_doc(t_heredoc *hdoc, int idx)
 {
 	char	*str;
 	pid_t	pid;
 	int		here_fd;
+	int		status;
 
+	// signal(SIGINT, SIG_IGN);
 	here_fd = open(hdoc->filename_temp[idx], O_RDWR | O_CREAT | O_TRUNC, 0666);
 	pid = fork();
 	if (pid < 0)
@@ -111,7 +158,23 @@ int	ft_here_doc(t_heredoc *hdoc, int idx)
 			free(str);
 		}
 	}
-	wait(NULL);
-	init_signalaction2(); // 이건 메인에 있는것과 같음. 그냥 이 함수말고 외부함수에서 한번 더 호출해도 됨
-	return (here_fd);
+	else
+	{
+		signal(SIGINT, handler);
+		// a = wait(NULL);
+
+		wait(&status);
+		// if (status == 5)
+		// 	printf("status == 5\n");
+		// else
+		// 	printf("status != 5\n");
+		// printf("status : %d\n", status);
+		// printf("%d\n", WEXITSTATUS(status));
+
+		// init_signalaction2(); // 이건 메인에 있는것과 같음. 그냥 이 함수말고 외부함수에서 한번 더 호출해도 됨
+		if (WEXITSTATUS(status) == 5)
+			exit_status = 5;
+		return (here_fd);
+
+	}
 }

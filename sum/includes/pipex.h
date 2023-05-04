@@ -17,6 +17,10 @@
 # include "../libft/mylibft.h"
 # include "./structs.h"
 
+//------------------------------------------------
+int	exit_status;
+//------------------------------------------------
+
 /*			deque			*/
 t_deque		*new_deque(void);
 int			deque_size(t_deque *deque);
