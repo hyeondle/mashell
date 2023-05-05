@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operation.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Linsio <Linsio@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 02:03:12 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/05/03 11:22:58 by Linsio           ###   ########.fr       */
+/*   Updated: 2023/05/05 19:47:49 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	operation(char *input, t_setting **set)
 		tokenized_str[i] = del_quotes(set, tokenized_str[i]);
 		i++;
 	}
-	execute(tokenized_str, set);
+	run_cmd(tokenized_str, (*set)->envp, set);
 }
 
 /*

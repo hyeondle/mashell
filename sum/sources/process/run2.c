@@ -6,11 +6,12 @@
 /*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 10:05:53 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/04/29 10:44:43 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/05/05 19:56:25 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/pipex.h"
+#include "../../includes/minishell.h"
 
 void	check_pipe_redir(t_node *node, t_info *info)
 {
@@ -44,12 +45,12 @@ void	check_file_redir(t_node *node, t_info *info)
 	}
 }
 
-void	child_process(t_node *node, t_info *info, char **envp)
+void	child_process(t_node *node, t_info *info, char **envp, t_setting **set)
 {
 	check_pipe_redir(node, info);
 	check_file_redir(node, info);
 	if (node->cmd)
-		exec(node->cmd, envp);
+		exec(node->cmd, envp, set);
 	exit(0);
 }
 

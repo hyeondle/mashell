@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Linsio <Linsio@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 23:53:07 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/05/03 14:00:11 by Linsio           ###   ########.fr       */
+/*   Updated: 2023/05/05 19:44:38 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,9 @@ int	main(int argc, char **argv, char **envp)
 	char		*input;
 	int			i;
 
+	signal(SIGINT, SIG_IGN);
 	set = init_set(envp);
+	signal(SIGINT, SIG_IGN);
 	i = 0;
 	while (1)
 	{

@@ -6,7 +6,7 @@
 /*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 10:05:42 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/04/29 10:44:30 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/05/05 19:53:32 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,13 +80,13 @@ char	*find_command_path(char *cmd, char **envp)
 	return (NULL);
 }
 
-t_bool	exec(char **cmd_args, char **envp)
+t_bool	exec(char **cmd_args, char **envp, t_setting **set)
 {
 	char	*cmd_with_path;
 
 	if (!cmd_args[0])
 		return (FALSE);
-	if (ft_strcmp("echo", cmd_args[0]) != 0 && ft_strcmp("env", cmd_args[0]) != 0 && ft_strcmp("export", cmd_args[0]) != 0)
+	if (execute_check(cmd_args[0]) == 0)
 	{
 		cmd_with_path = find_command_path(cmd_args[0], envp);
 		if (execve(cmd_with_path, cmd_args, envp) == -1)
@@ -97,10 +97,7 @@ t_bool	exec(char **cmd_args, char **envp)
 	}
 	else
 	{
-		if (ft_strcmp("echo", cmd_args[0]) == 0)
-			ft_echo(cmd_args);
-		else
-			ft_env(envp);
+		go_execute(cmd_args, set, cmd_args[0]);
 	}
 	return (TRUE);
 }

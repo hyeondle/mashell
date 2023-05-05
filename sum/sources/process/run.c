@@ -6,11 +6,12 @@
 /*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 10:05:52 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/04/29 10:44:42 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/05/05 19:56:28 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/pipex.h"
+#include "../../includes/minishell.h"
 
 void	unlink_temp_file(t_heredoc *hdoc)
 {
@@ -110,7 +111,7 @@ void	run_cmd(char **arg, char **envp, t_setting **set)
 		if (info->arr_pid[node->idx] < 0)
 			ft_p_error("Error: fork()");
 		else if (info->arr_pid[node->idx] == 0)
-			child_process(node, info, envp);
+			child_process(node, info, envp, set);
 		else
 			node = parent_process(node, info);
 	}

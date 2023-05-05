@@ -6,7 +6,7 @@
 /*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 10:05:49 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/04/29 10:42:44 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/05/05 19:56:11 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char		*find_env_path(char **envp);
 char		*free_and_return(char **token_env_path, char *buffer);
 char		**tokenize(char **envp);
 char		*find_command_path(char *cmd, char **envp);
-t_bool		exec(char **cmd_args, char **envp);
+t_bool		exec(char **cmd_args, char **envp, t_setting **set);
 
 /*			heredoc			*/
 void		get_heredoc(t_heredoc *hdoc);
@@ -61,7 +61,7 @@ t_deque		*parsing_pipe(char **arg);
 void		run_cmd(char **arg, char **envp, t_setting **set);
 void		check_pipe_redir(t_node *node, t_info *info);
 void		check_file_redir(t_node *node, t_info *info);
-void		child_process(t_node *node, t_info *info, char **envp);
+void		child_process(t_node *node, t_info *info, char **envp, t_setting **set);
 t_node		*parent_process(t_node *node, t_info *info);
 int			ft_wait_pids(t_info *info, t_setting **set);
 
