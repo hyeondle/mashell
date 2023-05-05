@@ -21,15 +21,15 @@ static int	del_size(char *str, int i, int size)
 			i++;
 			while (str[i] != '\'' && str[i] != '\0')
 				i++;
-			i++;
 		}
 		else if (str[i] == '\"')
 		{
 			i++;
 			while (str[i] != '\"' && str[i] != '\0')
 				i++;
-			i++;
 		}
+		if (str[i] == '\'' || str[i] == '\"')
+			i++;
 		if (token_check(str[i]) && str[i] != '\0')
 			size++;
 		if (str[i] != '\0')

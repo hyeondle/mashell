@@ -14,12 +14,12 @@
 
 int	execute_check(char *o)
 {
-	if (ft_strcmp(o, "echo") == 0)
-		return (2);
-	else if (ft_strcmp(o, "cd") == 0)
+	// if (ft_strcmp(o, "echo") == 0)
+	// 	return (2);
+	if (ft_strcmp(o, "cd") == 0)
 		return (3);
-	else if (ft_strcmp(o, "env") == 0)
-		return (4);
+	// else if (ft_strcmp(o, "env") == 0)
+	// 	return (4);
 	else if (ft_strcmp(o, "exit") == 0)
 		return (5);
 	else if (ft_strcmp(o, "export") == 0)
@@ -35,12 +35,13 @@ int	go_execute(char **inputs, t_setting **set, char *o)
 {
 	int	flag;
 
-	if (ft_strcmp(o, "echo") == 0)
-		flag = ft_echo(inputs);
-	else if (ft_strcmp(o, "cd") == 0)
-		flag = ft_cd(inputs);
-	else if (ft_strcmp(o, "env") == 0)
-		flag = ft_env((*set)->envp);
+	flag = 0;
+	// if (ft_strcmp(o, "echo") == 0)
+	// 	flag = ft_echo(inputs);
+	if (ft_strcmp(o, "cd") == 0)
+		flag = ft_cd(inputs, set);
+	// else if (ft_strcmp(o, "env") == 0)
+	// 	flag = ft_env((*set)->envp);
 	else if (ft_strcmp(o, "exit") == 0)
 		flag = ft_exit(inputs, set);
 	else if (ft_strcmp(o, "export") == 0)

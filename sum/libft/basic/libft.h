@@ -68,5 +68,6 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 int		ft_strcmp(const char *s1, const char *s2);
 char	*ft_strndup(const char *s, size_t n);
 int		ft_strnlen(const char *str, char c);
+void	ft_swap(char **s1, char **s2);
 
 #endif

@@ -57,6 +57,7 @@ SRCS	=	ft_atoi.c\
 			ft_strndup.c\
 			ft_strncmp.c\
 			ft_strnlen.c\
+			ft_swap.c\
 
 OBJS	= ${SRCS:.c=.o}
 INCD	= ./

@@ -43,7 +43,7 @@ int	ft_echo(char **inputs)
 	i = 1;
 	if (inputs[i] == NULL || *(inputs[i]) == '\0')
 	{
-		printf("\n");
+		ft_putstr_fd("\n", STDOUT_FILENO);
 		return (1);
 	}
 	if (ft_strcmp(inputs[i], "-n") == 0)
@@ -54,10 +54,12 @@ int	ft_echo(char **inputs)
 		{
 			if (!inputs[i + 1])
 			{
-				printf("%s\n", inputs[i]);
+				ft_putstr_fd(inputs[i], STDOUT_FILENO);
+				ft_putstr_fd("\n", STDOUT_FILENO);
 				break ;
 			}
-			printf("%s ", inputs[i]);
+			ft_putstr_fd(inputs[i], STDOUT_FILENO);
+			ft_putstr_fd(" ", STDOUT_FILENO);
 			i++;
 		}
 	}

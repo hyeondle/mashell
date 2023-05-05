@@ -46,5 +46,5 @@ int	ft_atoi(const char *str)
 		else if (ft_result * is_negative < -2147483648)
 			return (0);
 	}
-	return ((int)ft_result * is_negative);
+	return (ft_result * is_negative);
 }

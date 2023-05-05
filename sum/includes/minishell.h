@@ -106,7 +106,7 @@ int		ft_exit(char **inputs, t_setting **set);
 int		ft_export(t_setting **set, char **inputs);
 int		ft_unset(t_setting **set, char **inputs);
 int		ft_pwd(void);
-int		ft_cd(char **inputs);
+int		ft_cd(char **inputs, t_setting **set);
 
 /*temp*/
 char	*convertion(t_setting **set, char *str);

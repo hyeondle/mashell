@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../../includes/pipex.h"
+#include "../../includes/minishell.h"
 
 char	*find_env_path(char **envp)
 {
@@ -42,6 +43,10 @@ char	**tokenize(char **envp)
 	char	**token_env_path;
 
 	env_path = find_env_path(envp);
+	//------
+	if (!env_path)
+		env_path = ft_strdup("");
+	//------
 	token_env_path = ft_split(env_path, ':');
 	return (token_env_path);
 }
@@ -81,11 +86,21 @@ t_bool	exec(char **cmd_args, char **envp)
 
 	if (!cmd_args[0])
 		return (FALSE);
-	cmd_with_path = find_command_path(cmd_args[0], envp);
-	if (execve(cmd_with_path, cmd_args, envp) == -1)
+	if (ft_strcmp("echo", cmd_args[0]) != 0 && ft_strcmp("env", cmd_args[0]) != 0 && ft_strcmp("export", cmd_args[0]) != 0)
 	{
-		ft_putstr_fd("exec error\n", 2);
-		exit(126);
+		cmd_with_path = find_command_path(cmd_args[0], envp);
+		if (execve(cmd_with_path, cmd_args, envp) == -1)
+		{
+			ft_putstr_fd("exec error\n", 2);
+			exit(126);
+		}
+	}
+	else
+	{
+		if (ft_strcmp("echo", cmd_args[0]) == 0)
+			ft_echo(cmd_args);
+		else
+			ft_env(envp);
 	}
 	return (TRUE);
 }

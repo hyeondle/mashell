@@ -22,7 +22,14 @@ static int	digit_check(char *str)
 	{
 		k = ft_isdigit(str[i]);
 		if (k == 0)
+		{
+			if (str[i] == '+' || str[i] == '-')
+			{
+				i++;
+				continue ;
+			}
 			return (1);
+		}
 		i++;
 	}
 	return (0);
@@ -30,11 +37,11 @@ static int	digit_check(char *str)
 
 static void	exit_with_input(char **inputs, t_setting **set)
 {
-	int	i;
+	long int	i;
 
 	if (inputs[2])
 	{
-		ft_putstr_fd("exit: too many arguments\n", STDOUT_FILENO);
+		ft_putstr_fd("exit: too many arguments\n", STDERR_FILENO);
 		(*set)->exit = 0;
 		(*set)->last_exit_status = 1;
 	}
@@ -44,7 +51,7 @@ static void	exit_with_input(char **inputs, t_setting **set)
 		i = digit_check(inputs[1]);
 		if (i)
 		{
-			printf("exit: %s: numeric argument required\n", inputs[1]);
+			ft_putstr_fd("numeric argument required\n", STDERR_FILENO);
 			(*set)->last_exit_status = 255;
 		}
 		else
