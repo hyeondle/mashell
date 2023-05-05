@@ -225,6 +225,7 @@ void	ft_signal_child(void)
 	signal(SIGQUIT, signal_handler);
 }
 
+
 int	ft_here_doc(t_heredoc *hdoc, int idx)
 {
 	char	*str;
@@ -259,10 +260,6 @@ int	ft_here_doc(t_heredoc *hdoc, int idx)
 	signal(SIGQUIT, SIG_IGN);
 	wait(&status);
 	if (WIFSIGNALED(status))
-	{
-		printf("\n");
 		exit_status = -5;
-	}
-	printf("%d\n", exit_status);
 	return (here_fd);
 }
