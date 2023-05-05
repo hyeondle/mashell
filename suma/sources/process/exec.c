@@ -70,7 +70,7 @@ char	*find_command_path(char *cmd, char **envp)
 		j++;
 	}
 	perror(cmd);
-	exit(1);
+	exit(127);
 	return (NULL);
 }
 
@@ -83,7 +83,8 @@ t_bool	exec(char **cmd_args, char **envp)
 	cmd_with_path = find_command_path(cmd_args[0], envp);
 	if (execve(cmd_with_path, cmd_args, envp) == -1)
 	{
-		exit(1);
+		perror("execve");
+		exit(126);
 	}
 	return (TRUE);
 }
