@@ -6,7 +6,7 @@
 /*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 17:23:42 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/05/05 14:31:55 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/05/06 02:58:25 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static char	*join_sentence(char *str, int i, char *key, char *value)
 				ft_strlen(str) - ft_strlen(key) + 1);
 	duo = ft_strjoin(semi, joined);
 	free(semi);
+	free(joined);
 	return (duo);
 }
 
