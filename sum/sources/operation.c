@@ -28,7 +28,7 @@ void	operation(char *input, t_setting **set)
 		tokenized_str[i] = del_quotes(set, tokenized_str[i]);
 		i++;
 	}
-	run_cmd(tokenized_str, (*set)->envp, set);
+	execute(tokenized_str, set);
 }
 
 /*

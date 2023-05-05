@@ -229,28 +229,28 @@ void report_error(char *c)
 	free(err_str2);
 }
 
-// void	go_run_cmd(char **inputs, t_setting **set, int i)
-// {
-// 	char	**r_input;
-// 	int		j;
-// 	int		k;
+void	go_run_cmd(char **inputs, t_setting **set, int i)
+{
+	char	**r_input;
+	int		j;
+	int		k;
 
-// 	j = 0;
-// 	while (inputs[j])
-// 		j++;
-// 	r_input = (char **)malloc(sizeof(char *) * (j - i + 1));
-// 	k = i + 1;
-// 	j = 0;
-// 	while (inputs[k])
-// 	{
-// 		r_input[j] = ft_strdup(inputs[k]);
-// 		k++;
-// 		j++;
-// 	}
-// 	r_input[j] = NULL;
-// 	run_cmd(r_input, (*set)->envp, set);
-// 	free_temp_env(r_input);
-// }
+	j = 0;
+	while (inputs[j])
+		j++;
+	r_input = (char **)malloc(sizeof(char *) * (j - i + 1));
+	k = i + 1;
+	j = 0;
+	while (inputs[k])
+	{
+		r_input[j] = ft_strdup(inputs[k]);
+		k++;
+		j++;
+	}
+	r_input[j] = NULL;
+	run_cmd(r_input, (*set)->envp, set);
+	free_temp_env(r_input);
+}
 
 int	ft_export(t_setting **set, char **inputs)
 {

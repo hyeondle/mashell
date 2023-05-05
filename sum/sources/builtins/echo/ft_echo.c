@@ -36,7 +36,7 @@ static int	ft_echo_with_option_n(char **inputs)
 	return (0);
 }
 
-int	ft_echo(char **inputs)
+int	ft_echo(char **inputs, t_setting **set)
 {
 	int	i;
 
@@ -44,6 +44,7 @@ int	ft_echo(char **inputs)
 	if (inputs[i] == NULL || *(inputs[i]) == '\0')
 	{
 		ft_putstr_fd("\n", STDOUT_FILENO);
+		(*set)->last_exit_status = 1;
 		return (1);
 	}
 	if (ft_strcmp(inputs[i], "-n") == 0)
@@ -63,5 +64,6 @@ int	ft_echo(char **inputs)
 			i++;
 		}
 	}
+	(*set)->last_exit_status = 0;
 	return (0);
 }

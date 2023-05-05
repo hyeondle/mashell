@@ -18,6 +18,12 @@ void	ft_p_error(char *str)
 	exit(1);
 }
 
+void	putstr_exit(char *str, int fd, int exit_code)
+{
+	ft_putstr_fd(str, fd);
+	exit(exit_code);
+}
+
 void	free_2d_array(char **arr)
 {
 	int	i;

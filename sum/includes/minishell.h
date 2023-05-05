@@ -100,8 +100,9 @@ char	*deli_char(char c);
 char	*deli_char_over_delim(char c, int i, int j);
 int		over_2_delims_i(char **str, int i, int k);
 /*			builtins			*/
-int		ft_echo(char **inputs);
-int		ft_env(char **envp);
+int		ft_echo(char **inputs, t_setting **set);
+
+int		ft_env(char **envp, t_setting **set);
 int		ft_exit(char **inputs, t_setting **set);
 int		ft_export(t_setting **set, char **inputs);
 int		ft_unset(t_setting **set, char **inputs);

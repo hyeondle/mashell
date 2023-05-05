@@ -32,6 +32,8 @@ char		*free_and_return(char **token_env_path, char *buffer);
 char		**tokenize(char **envp);
 char		*find_command_path(char *cmd, char **envp);
 t_bool		exec(char **cmd_args, char **envp, t_setting **set);
+void		check_perm_dir(char **cmd_args, char **envp);
+
 
 /*			heredoc			*/
 void		get_heredoc(t_heredoc *hdoc);
@@ -70,5 +72,7 @@ void		ft_p_error(char *str);
 void		free_2d_array(char **arr);
 void		init_2d_arr(char ***arr);
 char		**append_str(char **arg, char *str);
+void		putstr_exit(char *str, int fd, int exit_code);
+
 
 #endif

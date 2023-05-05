@@ -9,7 +9,6 @@
 #    Updated: 2023/05/05 19:44:13 by hyeondle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
 NAME			=	minishell
 
 HEADER_DIR		=	./includes/
@@ -73,6 +72,7 @@ SOURCES_MAKING	=	execute/execute.c\
 					environment/get_str.c\
 					process/deque.c\
 					process/exec.c\
+					process/exec2.c\
 					process/heredoc.c\
 					process/heredoc2.c\
 					process/node.c\
@@ -91,7 +91,7 @@ LIBFT_DIR		=	./libft/
 LIBFT			=	$(LIBFT_DIR)libft.a
 LIBFT_FLAG		=	-L$(LIBFT_DIR) -lft
 
-READLINE_FLAG	=	-lreadline -L/goinfre/hyeondle/.brew/opt/readline/lib -I/goinfre/hyeondle/.brew/opt/readline/include
+READLINE_FLAG	=	-lreadline -L/opt/homebrew/opt/readline/lib -I/opt/homebrew/opt/readline/include
 
 CC				=	cc
 FLAGS			=	-Wall -Wextra -Werror
@@ -99,7 +99,7 @@ RM				=	rm -f
 RM_OBJECT		=	rm -rf $(OBJECT)
 
 .c.o			:
-					$(CC) -g -fsanitize=address -I $(HEADER_DIR) -I/goinfre/hyeondle/.brew/opt/readline/include -c  $< -o $(<:.c=.o)
+					$(CC) -g -fsanitize=address -I $(HEADER_DIR) -I/opt/homebrew/opt/readline/include -c  $< -o $(<:.c=.o)
 
 all				:	$(NAME)
 

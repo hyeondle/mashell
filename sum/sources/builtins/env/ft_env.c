@@ -12,18 +12,22 @@
 
 #include "../../../includes/minishell.h"
 
-int	ft_env(char **envp)
+int	ft_env(char **envp, t_setting **set)
 {
 	int	i;
 
 	i = 0;
 	if (!envp)
+	{
+		(*set)->last_exit_status = 1;
 		return (1);
+	}
 	while (envp[i])
 	{
 		ft_putstr_fd(envp[i], STDOUT_FILENO);
 		ft_putstr_fd("\n", STDOUT_FILENO);
 		i++;
 	}
+	(*set)->last_exit_status = 0;
 	return (0);
 }
