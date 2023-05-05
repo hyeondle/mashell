@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyejeong <hyejeong@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 23:53:34 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/05/05 23:26:58 by hyejeong         ###   ########.fr       */
+/*   Updated: 2023/05/06 00:24:30 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,5 +122,6 @@ char	*del_quotes(t_setting **set, char *str);
 char	*get_key(const char *str);
 char	*get_value(const char *str);
 void	init_signalaction(void);
+void	free_settings(t_setting *set);
 
 #endif

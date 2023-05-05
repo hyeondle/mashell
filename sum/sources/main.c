@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyejeong <hyejeong@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 23:53:07 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/05/06 00:07:52 by hyejeong         ###   ########.fr       */
+/*   Updated: 2023/05/06 00:45:02 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,6 @@ int	main(int argc, char **argv, char **envp)
 	char		*input;
 	int			i;
 
-	atexit(check_leak);
 	signal(SIGINT, SIG_IGN);
 	set = init_set(envp);
 	i = 0;
@@ -101,7 +100,7 @@ int	main(int argc, char **argv, char **envp)
 	{
 		input = get_input(&set);
 		if (!input)
-			exit(0);
+			break ;
 		if (unclosed_quote(input))
 			continue ;
 		ft_add_history(input, &set);
@@ -111,5 +110,9 @@ int	main(int argc, char **argv, char **envp)
 			break ;
 	}
 	save_history(&set);
-	return (set->last_exit_status);
+	i = set->last_exit_status;
+	free_settings(set);
+	rl_clear_history();
+	atexit(check_leak);
+	return (i);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   save_history.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Linsio <Linsio@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 04:12:16 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/04/19 10:58:00 by Linsio           ###   ########.fr       */
+/*   Updated: 2023/05/06 00:25:05 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ static void	save_s_hist(int fd, t_history *s_hist)
 	temp = s_hist;
 	if (!fd || !s_hist)
 		return ;
-	if (temp && temp->next != NULL && temp->history != NULL)
-		write(fd, "\n", 1);
 	while (temp && temp->next != NULL && temp->history != NULL)
 	{
 		write(fd, temp->history, ft_strlen(temp->history));
@@ -40,6 +38,7 @@ static void	save_s_hist(int fd, t_history *s_hist)
 		temp = temp->next;
 	}
 	write(fd, temp->history, ft_strlen(temp->history));
+	write(fd, "\n", 1);
 }
 
 void	save_history(t_setting **setting)
