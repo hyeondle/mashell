@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: Linsio <Linsio@student.42.fr>              +#+  +:+       +#+         #
+#    By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/14 15:17:23 by hyeondle          #+#    #+#              #
-#    Updated: 2023/04/30 04:42:05 by Linsio           ###   ########.fr        #
+#    Updated: 2023/05/05 14:23:57 by hyeondle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -91,7 +91,7 @@ LIBFT_DIR		=	./libft/
 LIBFT			=	$(LIBFT_DIR)libft.a
 LIBFT_FLAG		=	-L$(LIBFT_DIR) -lft
 
-READLINE_FLAG	=	-lreadline -L/opt/homebrew/opt/readline/lib -I/opt/homebrew/opt/readline/include
+READLINE_FLAG	=	-lreadline -L/goinfre/hyeondle/.brew/opt/readline/lib -I/goinfre/hyeondle/.brew/opt/readline/include
 
 CC				=	cc
 FLAGS			=	-Wall -Wextra -Werror
@@ -99,7 +99,7 @@ RM				=	rm -f
 RM_OBJECT		=	rm -rf $(OBJECT)
 
 .c.o			:
-					$(CC) -g -fsanitize=address -I $(HEADER_DIR) -I/opt/homebrew/opt/readline/include -c  $< -o $(<:.c=.o)
+					$(CC) -g -fsanitize=address -I $(HEADER_DIR) -I/goinfre/hyeondle/.brew/opt/readline/include -c  $< -o $(<:.c=.o)
 
 all				:	$(NAME)
 

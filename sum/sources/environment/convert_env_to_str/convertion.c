@@ -6,7 +6,7 @@
 /*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 17:23:42 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/04/29 09:00:47 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/05/05 14:31:55 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,10 @@ static int	dollardollar(char *str)
 		else if (str[i] == '\'' && quote == NONE)
 			quote = SINGLE;
 		if (str[i] == '$' && quote != SINGLE)
-			return (i);
+		{
+			if (str[i + 1] && (ft_isalnum(str[i + 1]) || str[i + 1] == '?'))
+				return (i);
+		}
 		i++;
 	}
 	return (-1);
