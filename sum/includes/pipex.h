@@ -6,7 +6,7 @@
 /*   By: hyejeong <hyejeong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 10:05:49 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/05/05 23:31:02 by hyejeong         ###   ########.fr       */
+/*   Updated: 2023/05/06 02:52:26 by hyejeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ t_heredoc	*do_heredoc(char **arg, t_deque *deque);
 void		cnt_heredoc_in_node(t_deque *deque);
 void		distribute_heredoc(t_deque *deque, t_heredoc *hdoc);
 int			ft_here_doc(t_heredoc *hdoc, int idx);
+void		ft_here_doc_child(int idx, int *here_fd, t_heredoc *hdoc);
+
 
 /*			node			*/
 t_node		*new_node(void);

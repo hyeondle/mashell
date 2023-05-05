@@ -6,7 +6,7 @@
 /*   By: hyejeong <hyejeong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 10:05:42 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/05/05 23:36:25 by hyejeong         ###   ########.fr       */
+/*   Updated: 2023/05/06 02:06:50 by hyejeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,14 @@ void	check_perm_dir(char **cmd_args, char **envp)
 				putstr_exit(" Permission denied\n", 2, 126);
 		}
 	}
+}
+
+void	errors(char c)
+{
+	if (c == '.' || c == '/')
+		putstr_exit(" No such file or directory\n", 2, 127);
+	else
+		putstr_exit(" command not found\n", 2, 127);
 }
 
 char	*find_command_path(char *cmd, char **envp)
@@ -52,10 +60,7 @@ char	*find_command_path(char *cmd, char **envp)
 			free(buffer);
 		j++;
 	}
-	if (cmd[0] == '.' || cmd[0] == '/')
-		putstr_exit(" No such file or directory\n", 2, 127);
-	else
-		putstr_exit(" command not found\n", 2, 127);
+	errors(cmd[0]);
 	return (NULL);
 }
 

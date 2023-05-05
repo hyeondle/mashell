@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+         #
+#    By: hyejeong <hyejeong@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/14 15:17:23 by hyeondle          #+#    #+#              #
-#    Updated: 2023/05/06 00:38:09 by hyeondle         ###   ########.fr        #
+#    Updated: 2023/05/06 00:50:43 by hyejeong         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -95,7 +95,7 @@ LIBFT_DIR		=	./libft/
 LIBFT			=	$(LIBFT_DIR)libft.a
 LIBFT_FLAG		=	-L$(LIBFT_DIR) -lft
 
-READLINE_FLAG	=	-lreadline -L/goinfre/hyeondle/.brew/opt/readline/lib -I/goinfre/hyeondle/.brew/opt/readline/include
+READLINE_FLAG	=	-lreadline -L/goinfre/hyejeong/.brew/opt/readline/lib -I/goinfre/hyejeong/.brew/opt/readline/include
 
 CC				=	cc
 FLAGS			=	-Wall -Wextra -Werror
@@ -103,7 +103,7 @@ RM				=	rm -f
 RM_OBJECT		=	rm -rf $(OBJECT)
 
 .c.o			:
-					$(CC) -O3 -I $(HEADER_DIR) -I/goinfre/hyeondle/.brew/opt/readline/include -c  $< -o $(<:.c=.o)
+					$(CC) -O3 -I $(HEADER_DIR) -I/goinfre/hyejeong/.brew/opt/readline/include -c  $< -o $(<:.c=.o)
 
 all				:	$(NAME)
 

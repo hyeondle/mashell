@@ -6,7 +6,7 @@
 /*   By: hyejeong <hyejeong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 10:05:43 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/05/05 22:33:17 by hyejeong         ###   ########.fr       */
+/*   Updated: 2023/05/06 02:07:02 by hyejeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@ void	get_heredoc(t_heredoc *hdoc)
 
 void	parsing_heredoc(char **arg, t_heredoc *hdoc)
 {
-	int	i;
+	int		i;
+	char	*new_str;
+	char	*new_int;
 
 	i = 0;
 	while (arg[i])
@@ -35,8 +37,11 @@ void	parsing_heredoc(char **arg, t_heredoc *hdoc)
 		if (ft_strcmp(arg[i], "<<") == 0)
 		{
 			hdoc->terminators = append_str(hdoc->terminators, arg[i + 1]);
-			hdoc->filename_temp = append_str(hdoc->filename_temp, \
-			ft_strjoin("./.here_doc", ft_itoa(hdoc->size_heredoc)));
+			new_int = ft_itoa(hdoc->size_heredoc);
+			new_str = ft_strjoin("./.here_doc", new_int);
+			hdoc->filename_temp = append_str(hdoc->filename_temp, new_str);
+			free(new_str);
+			free(new_int);
 			hdoc->size_heredoc++;
 		}
 		i++;

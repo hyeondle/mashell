@@ -6,7 +6,7 @@
 /*   By: hyejeong <hyejeong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 02:49:06 by Linsio            #+#    #+#             */
-/*   Updated: 2023/05/06 00:04:00 by hyejeong         ###   ########.fr       */
+/*   Updated: 2023/05/06 01:42:39 by hyejeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static char	*get_err_msg(char *c1)
 	char	*t2;
 
 	t1 = ft_strjoin("exit: ", c1);
-	t2 = ft_strjoin(t1,": numeric argument required\n");
+	t2 = ft_strjoin(t1, ": numeric argument required\n");
 	free(t1);
 	return (t2);
 }
@@ -72,7 +72,6 @@ static void	exit_with_input(char **inputs, t_setting **set)
 	}
 	else
 		(*set)->last_exit_status = (ft_atoi(inputs[1]) % 256);
-
 }
 
 int	ft_exit(char **inputs, t_setting **set)
