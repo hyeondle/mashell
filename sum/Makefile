@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+         #
+#    By: hyejeong <hyejeong@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/04/14 15:17:23 by hyeondle          #+#    #+#              #
-#    Updated: 2023/05/06 02:53:59 by hyeondle         ###   ########.fr        #
+#    Created: 2023/04/14 15:17:23 by hyejeong          #+#    #+#              #
+#    Updated: 2023/05/06 03:12:19 by hyejeong         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,6 +81,7 @@ SOURCES_MAKING	=	execute/execute.c\
 					process/redir.c\
 					process/run.c\
 					process/run2.c\
+					process/run3.c\
 					process/utils.c\
 					process/signals.c\
 					frees.c\
@@ -95,7 +96,7 @@ LIBFT_DIR		=	./libft/
 LIBFT			=	$(LIBFT_DIR)libft.a
 LIBFT_FLAG		=	-L$(LIBFT_DIR) -lft
 
-READLINE_FLAG	=	-lreadline -L/goinfre/hyeondle/.brew/opt/readline/lib -I/goinfre/hyeondle/.brew/opt/readline/include
+READLINE_FLAG	=	-lreadline -L/goinfre/hyejeong/.brew/opt/readline/lib -I/goinfre/hyejeong/.brew/opt/readline/include
 
 CC				=	cc
 FLAGS			=	-Wall -Wextra -Werror
@@ -103,7 +104,7 @@ RM				=	rm -f
 RM_OBJECT		=	rm -rf $(OBJECT)
 
 .c.o			:
-					$(CC) -O3 -I $(HEADER_DIR) -I/goinfre/hyeondle/.brew/opt/readline/include -c  $< -o $(<:.c=.o)
+					$(CC) -O3 -I $(HEADER_DIR) -I/goinfre/hyejeong/.brew/opt/readline/include -c  $< -o $(<:.c=.o)
 
 all				:	$(NAME)
 

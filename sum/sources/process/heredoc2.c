@@ -6,7 +6,7 @@
 /*   By: hyejeong <hyejeong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 10:05:44 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/05/06 02:41:48 by hyejeong         ###   ########.fr       */
+/*   Updated: 2023/05/06 03:16:00 by hyejeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int	ft_here_doc(t_heredoc *hdoc, int idx)
 	ignores();
 	wait(&status);
 	if (WIFSIGNALED(status))
-		exit_status = -5;
+		g_exit_status = -5;
 	init_signalaction();
 	return (here_fd);
 }

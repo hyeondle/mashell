@@ -6,7 +6,7 @@
 /*   By: hyejeong <hyejeong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 10:05:49 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/05/06 02:52:26 by hyejeong         ###   ########.fr       */
+/*   Updated: 2023/05/06 03:14:20 by hyejeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@
 # include "../libft/mylibft.h"
 # include "./structs.h"
 
-//------------------------------------------------
-int	exit_status;
-//------------------------------------------------
+int	g_exit_status;
 
 /*			deque			*/
 t_deque		*new_deque(void);
@@ -34,7 +32,6 @@ char		*find_command_path(char *cmd, char **envp);
 t_bool		exec(char **cmd_args, char **envp, t_setting **set);
 void		check_perm_dir(char **cmd_args, char **envp);
 
-
 /*			heredoc			*/
 void		get_heredoc(t_heredoc *hdoc);
 void		parsing_heredoc(char **arg, t_heredoc *hdoc);
@@ -44,7 +41,6 @@ void		cnt_heredoc_in_node(t_deque *deque);
 void		distribute_heredoc(t_deque *deque, t_heredoc *hdoc);
 int			ft_here_doc(t_heredoc *hdoc, int idx);
 void		ft_here_doc_child(int idx, int *here_fd, t_heredoc *hdoc);
-
 
 /*			node			*/
 t_node		*new_node(void);
@@ -65,9 +61,14 @@ t_deque		*parsing_pipe(char **arg);
 void		run_cmd(char **arg, char **envp, t_setting **set);
 void		check_pipe_redir(t_node *node, t_info *info);
 void		check_file_redir(t_node *node, t_info *info);
-void		child_process(t_node *node, t_info *info, char **envp, t_setting **set);
+void		child_process(t_node *node, t_info *info, \
+char **envp, t_setting **set);
 t_node		*parent_process(t_node *node, t_info *info);
 int			ft_wait_pids(t_info *info, t_setting **set);
+void		free_deque(t_deque *deque);
+void		free_run_cmd(t_deque *deque, t_info *info, t_heredoc *hdoc);
+void		run_cmd_fork(t_deque *deque, t_info *info, \
+char **envp, t_setting **set);
 
 /*			utils			*/
 void		ft_p_error(char *str);
