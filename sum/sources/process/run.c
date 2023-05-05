@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   run.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyejeong <hyejeong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 10:05:52 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/05/05 19:56:28 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/05/05 22:40:50 by hyejeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ t_deque	*parsing_pipe(char **arg)
 	return (deque);
 }
 
+
 void	run_cmd(char **arg, char **envp, t_setting **set)
 {
 	t_deque		*deque;
@@ -97,19 +98,17 @@ void	run_cmd(char **arg, char **envp, t_setting **set)
 	deque = parsing_pipe(arg);
 	info = init_info(deque);
 	hdoc = do_heredoc(arg, deque);
-//----------------------------------------------------
 	if (exit_status == -5)
 	{
 		exit_status = 0;
 		return ;
 	}
-//----------------------------------------------------
 	node = deque->front;
 	while (node)
 	{
 		info->arr_pid[node->idx] = fork();
 		if (info->arr_pid[node->idx] < 0)
-			ft_p_error("Error: fork()");
+			putstr_exit("fork()\n", 2, 1);
 		else if (info->arr_pid[node->idx] == 0)
 			child_process(node, info, envp, set);
 		else

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_input.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Linsio <Linsio@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hyejeong <hyejeong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 01:33:48 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/05/03 14:11:08 by Linsio           ###   ########.fr       */
+/*   Updated: 2023/05/05 22:45:16 by hyejeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,19 +54,3 @@ char	*get_input(t_setting **set)
 		printf("syntax error: unexpected end of file\n");
 	return (input);
 }
-
-/*
-// input = ft_strjoin(input, "\n");
-		// while (i)
-		// {
-		// 	input_add = readline("> ");
-		// 	if (!input_add)
-		// 	{
-		// 		i = forced_terminated(input_add, input);
-		// 		if (i == 0)
-		// 			break;
-		// 	}
-		// 	input = join_input(input, input_add);
-		// 	i = input_check(input);
-		// }
-*/

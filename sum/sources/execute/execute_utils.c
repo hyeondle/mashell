@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyejeong <hyejeong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 06:55:00 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/04/15 07:20:53 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/05/05 22:44:04 by hyejeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,8 @@
 
 int	execute_check(char *o)
 {
-	// if (ft_strcmp(o, "echo") == 0)
-	// 	return (2);
 	if (ft_strcmp(o, "cd") == 0)
 		return (3);
-	// else if (ft_strcmp(o, "env") == 0)
-	// 	return (4);
 	else if (ft_strcmp(o, "exit") == 0)
 		return (5);
 	else if (ft_strcmp(o, "export") == 0)

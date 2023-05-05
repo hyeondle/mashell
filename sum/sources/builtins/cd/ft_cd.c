@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyejeong <hyejeong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 02:48:05 by Linsio            #+#    #+#             */
-/*   Updated: 2023/04/15 06:37:50 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/05/05 22:41:06 by hyejeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	ft_cd(char **inputs, t_setting **set)
 {
 	char	*err_str;
+
 	if (chdir(inputs[1]) != 0)
 	{
 		(*set)->last_exit_status = 1;

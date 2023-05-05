@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Linsio <Linsio@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hyejeong <hyejeong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:43:19 by Linsio            #+#    #+#             */
-/*   Updated: 2023/05/03 12:34:48 by Linsio           ###   ########.fr       */
+/*   Updated: 2023/05/05 22:44:21 by hyejeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,16 +87,6 @@ int	execute(char **inputs, t_setting **set)
 	o = inputs[0];
 	if (o == NULL)
 		return (1);
-	// if (ft_strcmp(o, "exit") == 0)
-	// 	ft_exit(inputs, set);
-	// else if (ft_strcmp(o, "export") == 0)
-	// 	ft_export(set, inputs);
-	// else if (ft_strcmp(o, "unset") == 0)
-	// 	ft_unset(set, inputs);
-	// else if (ft_strcmp(o, "cd") == 0)
-	// 	ft_cd(inputs, set);
-	// else if (ft_strcmp(o, "pwd") == 0)
-	// 	ft_pwd();
 	if (execute_check(o) != 0)
 		go_execute(inputs, set, o);
 	else

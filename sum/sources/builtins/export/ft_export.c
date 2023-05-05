@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyejeong <hyejeong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 02:47:04 by Linsio            #+#    #+#             */
-/*   Updated: 2023/04/29 05:01:02 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/05/05 22:42:32 by hyejeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
-
 
 // static int	check_export_input(char *str)
 // {
@@ -273,7 +272,6 @@ int	ft_export(t_setting **set, char **inputs)
 			report_error(inputs[i]);
 			return (0);
 		}
-		
 		add_env(&((*set)->env_list), inputs[i], set);
 		i++;
 	}

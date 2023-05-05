@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec.c                                             :+:      :+:    :+:   */
+/*   exec2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyejeong <hyejeong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 10:05:42 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/05/05 19:53:32 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/05/05 22:32:51 by hyejeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,8 @@ char	**tokenize(char **envp)
 	char	**token_env_path;
 
 	env_path = find_env_path(envp);
-	//------
 	if (!env_path)
 		env_path = ft_strdup("");
-	//------
 	token_env_path = ft_split(env_path, ':');
 	return (token_env_path);
 }
