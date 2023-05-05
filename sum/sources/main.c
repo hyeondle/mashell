@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyejeong <hyejeong@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 23:53:07 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/05/06 01:57:38 by hyejeong         ###   ########.fr       */
+/*   Updated: 2023/05/06 02:57:36 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,10 +82,10 @@ static int	unclosed_quote(char *input)
 	return (0);
 }
 
-// static void	check_leak(void)
-// {
-// 	system("leaks minishell");
-// }
+static void	check_leak(void)
+{
+	system("leaks minishell");
+}
 
 int	main(int argc, char **argv, char **envp)
 {
@@ -113,6 +113,6 @@ int	main(int argc, char **argv, char **envp)
 	i = set->last_exit_status;
 	free_settings(set);
 	rl_clear_history();
-	// atexit(check_leak);
+	atexit(check_leak);
 	return (i);
 }
