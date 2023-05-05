@@ -6,7 +6,7 @@
 #    By: hyejeong <hyejeong@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/14 15:17:23 by hyeondle          #+#    #+#              #
-#    Updated: 2023/05/05 22:27:56 by hyejeong         ###   ########.fr        #
+#    Updated: 2023/05/06 00:11:28 by hyejeong         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,6 +54,7 @@ SOURCES_MAKING	=	execute/execute.c\
 					builtins/echo/ft_echo.c\
 					builtins/env/ft_env.c\
 					builtins/export/ft_export.c\
+					builtins/export/ft_export_utils.c\
 					builtins/exit/ft_exit.c\
 					builtins/unset/ft_unset.c\
 					builtins/pwd/ft_pwd.c\
@@ -81,6 +82,7 @@ SOURCES_MAKING	=	execute/execute.c\
 					process/run.c\
 					process/run2.c\
 					process/utils.c\
+					process/signals.c\
 
 SOURCE			=	$(addprefix $(SOURCE_DIR), $(SOURCES))
 SOURCE_N		=	$(addprefix $(SOURCE_DIR), $(SOURCES_MAKING))
@@ -100,7 +102,7 @@ RM				=	rm -f
 RM_OBJECT		=	rm -rf $(OBJECT)
 
 .c.o			:
-					$(CC) -g -fsanitize=address -I $(HEADER_DIR) -I/goinfre/hyejeong/.brew/opt/readline/include -c  $< -o $(<:.c=.o)
+					$(CC) -O3 -I $(HEADER_DIR) -I/goinfre/hyejeong/.brew/opt/readline/include -c  $< -o $(<:.c=.o)
 
 all				:	$(NAME)
 
@@ -108,7 +110,7 @@ $(LIBFT)		:
 					make -C $(LIBFT_DIR)
 
 $(NAME)			:	$(OBJECT) $(LIBFT) $(READLINE)
-					$(CC) -g -fsanitize=address -I $(HEADER_DIR) $(OBJECT) $(READLINE_FLAG) $(LIBFT_FLAG) -o $(NAME)
+					$(CC) -O3 -I $(HEADER_DIR) $(OBJECT) $(READLINE_FLAG) $(LIBFT_FLAG) -o $(NAME)
 
 clean			:
 					$(RM_OBJECT)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Linsio <Linsio@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hyejeong <hyejeong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 23:53:34 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/05/03 10:41:42 by Linsio           ###   ########.fr       */
+/*   Updated: 2023/05/05 23:26:58 by hyejeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,9 +105,15 @@ int		ft_echo(char **inputs, t_setting **set);
 int		ft_env(char **envp, t_setting **set);
 int		ft_exit(char **inputs, t_setting **set);
 int		ft_export(t_setting **set, char **inputs);
+void	free_temp_env(char **temp_env);
 int		ft_unset(t_setting **set, char **inputs);
 int		ft_pwd(void);
 int		ft_cd(char **inputs, t_setting **set);
+char	*make_export_str(char *str);
+void	go_run_cmd(char **inputs, t_setting **set, int i);
+void	report_error(char *c);
+int		check_export_input(char *str);
+int		check_pipe(char **str);
 
 /*temp*/
 char	*convertion(t_setting **set, char *str);

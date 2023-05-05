@@ -6,7 +6,7 @@
 /*   By: hyejeong <hyejeong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 10:05:42 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/05/05 22:32:35 by hyejeong         ###   ########.fr       */
+/*   Updated: 2023/05/05 23:36:25 by hyejeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ char	*find_command_path(char *cmd, char **envp)
 	char	*temp;
 	int		j;
 
+	if (access(cmd, F_OK | X_OK) == 0)
+		return (cmd);
 	token_env_path = tokenize(envp);
 	j = 0;
 	while (token_env_path[j])
@@ -69,7 +71,7 @@ t_bool	exec(char **cmd_args, char **envp, t_setting **set)
 		check_perm_dir(cmd_args, envp);
 		cmd_with_path = find_command_path(cmd_args[0], envp);
 		if (execve(cmd_with_path, cmd_args, envp) == -1)
-			putstr_exit("exec_error\n", 2, 127);
+			putstr_exit("error\n", 2, 127);
 	}
 	else
 	{

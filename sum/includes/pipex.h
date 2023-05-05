@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyejeong <hyejeong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 10:05:49 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/05/05 19:56:11 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/05/05 23:31:02 by hyejeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,9 @@ void		init_2d_arr(char ***arr);
 char		**append_str(char **arg, char *str);
 void		putstr_exit(char *str, int fd, int exit_code);
 
+/*			signal			*/
+void		ft_signal_child(void);
+void		ignores(void);
+void		ft_signal_child_hd(void);
 
 #endif

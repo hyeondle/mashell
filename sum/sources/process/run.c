@@ -6,7 +6,7 @@
 /*   By: hyejeong <hyejeong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 10:05:52 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/05/05 22:40:50 by hyejeong         ###   ########.fr       */
+/*   Updated: 2023/05/05 23:24:47 by hyejeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,12 +108,19 @@ void	run_cmd(char **arg, char **envp, t_setting **set)
 	{
 		info->arr_pid[node->idx] = fork();
 		if (info->arr_pid[node->idx] < 0)
-			putstr_exit("fork()\n", 2, 1);
+			ft_p_error("Error: fork()");
 		else if (info->arr_pid[node->idx] == 0)
+		{
+			ft_signal_child();
 			child_process(node, info, envp, set);
+		}
 		else
+		{
+			ignores();
 			node = parent_process(node, info);
+		}
 	}
 	ft_wait_pids(info, set);
+	init_signalaction();
 	unlink_temp_file(hdoc);
 }

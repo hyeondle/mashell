@@ -6,7 +6,7 @@
 /*   By: hyejeong <hyejeong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 01:33:48 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/05/05 22:45:16 by hyejeong         ###   ########.fr       */
+/*   Updated: 2023/05/05 23:46:02 by hyejeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char	*get_input(t_setting **set)
 
 	input = readline("minishell> ");
 	if (!input)
-		exit(0);
+		ft_exit(NULL, set);
 	i = input_check(input);
 	if (i == 1)
 		printf("syntax error: unexpected end of file\n");

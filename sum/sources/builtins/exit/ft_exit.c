@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyejeong <hyejeong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 02:49:06 by Linsio            #+#    #+#             */
-/*   Updated: 2023/04/29 11:49:04 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/05/06 00:04:00 by hyejeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
+#include <unistd.h>
 
 static int	digit_check(char *str)
 {
@@ -35,35 +36,54 @@ static int	digit_check(char *str)
 	return (0);
 }
 
+static char	*get_err_msg(char *c1)
+{
+	char	*t1;
+	char	*t2;
+
+	t1 = ft_strjoin("exit: ", c1);
+	t2 = ft_strjoin(t1,": numeric argument required\n");
+	free(t1);
+	return (t2);
+}
+
 static void	exit_with_input(char **inputs, t_setting **set)
 {
-	long int	i;
+	int		i;
+	char	*err_msg;
 
-	if (inputs[2])
-	{
-		ft_putstr_fd("exit: too many arguments\n", STDERR_FILENO);
-		(*set)->exit = 0;
-		(*set)->last_exit_status = 1;
-	}
-	else
+	i = digit_check(inputs[1]);
+	if (i)
 	{
 		ft_putstr_fd("exit\n", STDOUT_FILENO);
-		i = digit_check(inputs[1]);
-		if (i)
-		{
-			ft_putstr_fd("numeric argument required\n", STDERR_FILENO);
-			(*set)->last_exit_status = 255;
-		}
-		else
-			(*set)->last_exit_status = (ft_atoi(inputs[1]) % 256);
+		err_msg = get_err_msg(inputs[1]);
+		ft_putstr_fd(err_msg, STDERR_FILENO);
+		free(err_msg);
+		(*set)->last_exit_status = 255;
 	}
+	else if (inputs[2])
+	{
+		i = digit_check(inputs[1]);
+		if (!i)
+			ft_putstr_fd("exit: too many arguments\n", STDERR_FILENO);
+		(*set)->last_exit_status = 1;
+		(*set)->exit = 0;
+		return ;
+	}
+	else
+		(*set)->last_exit_status = (ft_atoi(inputs[1]) % 256);
+
 }
 
 int	ft_exit(char **inputs, t_setting **set)
 {
 	(*set)->exit = 1;
 	if (!inputs)
+	{
+		(*set)->last_exit_status = 0;
+		ft_putstr_fd("exit\n", STDOUT_FILENO);
 		return (0);
+	}
 	else if (inputs[1])
 		exit_with_input(inputs, set);
 	else

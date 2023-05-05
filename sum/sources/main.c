@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyejeong <hyejeong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 23:53:07 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/05/05 19:44:38 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/05/06 00:07:52 by hyejeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+#include <stdlib.h>
 
 static void	handler(int sig, siginfo_t *info, void *oldsiga)
 {
@@ -81,15 +82,20 @@ static int	unclosed_quote(char *input)
 	return (0);
 }
 
+static void	check_leak(void)
+{
+	system("leaks minishell");
+}
+
 int	main(int argc, char **argv, char **envp)
 {
 	t_setting	*set;
 	char		*input;
 	int			i;
 
+	atexit(check_leak);
 	signal(SIGINT, SIG_IGN);
 	set = init_set(envp);
-	signal(SIGINT, SIG_IGN);
 	i = 0;
 	while (1)
 	{

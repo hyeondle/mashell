@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_echo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyejeong <hyejeong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 02:48:28 by Linsio            #+#    #+#             */
-/*   Updated: 2023/04/15 21:03:14 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/05/05 23:02:10 by hyejeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
+#include <unistd.h>
 
 static int	ft_echo_with_option_n(char **inputs)
 {
@@ -36,6 +37,22 @@ static int	ft_echo_with_option_n(char **inputs)
 	return (0);
 }
 
+static void	ft_echo_putstr(int i, char **inputs)
+{
+	while (inputs[i])
+	{
+		if (!inputs[i + 1])
+		{
+			ft_putstr_fd(inputs[i], STDOUT_FILENO);
+			ft_putstr_fd("\n", STDOUT_FILENO);
+			break ;
+		}
+		ft_putstr_fd(inputs[i], STDOUT_FILENO);
+		ft_putstr_fd(" ", STDOUT_FILENO);
+		i++;
+	}
+}
+
 int	ft_echo(char **inputs, t_setting **set)
 {
 	int	i;
@@ -51,18 +68,7 @@ int	ft_echo(char **inputs, t_setting **set)
 		ft_echo_with_option_n(inputs);
 	else
 	{
-		while (inputs[i])
-		{
-			if (!inputs[i + 1])
-			{
-				ft_putstr_fd(inputs[i], STDOUT_FILENO);
-				ft_putstr_fd("\n", STDOUT_FILENO);
-				break ;
-			}
-			ft_putstr_fd(inputs[i], STDOUT_FILENO);
-			ft_putstr_fd(" ", STDOUT_FILENO);
-			i++;
-		}
+		ft_echo_putstr(i, inputs);
 	}
 	(*set)->last_exit_status = 0;
 	return (0);

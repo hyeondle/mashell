@@ -6,11 +6,12 @@
 /*   By: hyejeong <hyejeong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 10:05:44 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/05/05 22:34:13 by hyejeong         ###   ########.fr       */
+/*   Updated: 2023/05/05 23:31:10 by hyejeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/pipex.h"
+#include "../../includes/minishell.h"
 
 void	cnt_heredoc_in_node(t_deque *deque)
 {
@@ -53,52 +54,6 @@ void	distribute_heredoc(t_deque *deque, t_heredoc *hdoc)
 	}
 }
 
-void	signal_handler_for_parent(int sig)
-{
-	if (sig == SIGINT)
-	{
-		exit_status = 1;
-		rl_replace_line("", 0);
-		rl_redisplay();
-	}
-}
-
-void	signal_handler(int sig)
-{
-	char	*tmp;
-
-	if (sig == SIGINT)
-	{
-		exit_status = 1;
-		rl_replace_line("", 1);
-		write(1, "\n", 1);
-		rl_on_new_line();
-		rl_redisplay();
-	}
-	if (sig == SIGQUIT)
-	{
-		tmp = ft_itoa(exit_status);
-		ft_putstr_fd("Quit: ", STDERR_FILENO);
-		ft_putstr_fd(tmp, STDERR_FILENO);
-		ft_putstr_fd("\n", STDERR_FILENO);
-		free(tmp);
-		exit(1);
-	}
-}
-
-void	ft_signal_init(void)
-{
-	signal(SIGINT, signal_handler);
-	signal(SIGQUIT, SIG_IGN);
-}
-
-void	ft_signal_child(void)
-{
-	signal(SIGINT, SIG_DFL);
-	signal(SIGQUIT, signal_handler);
-}
-
-
 int	ft_here_doc(t_heredoc *hdoc, int idx)
 {
 	char	*str;
@@ -106,15 +61,13 @@ int	ft_here_doc(t_heredoc *hdoc, int idx)
 	int		here_fd;
 	int		status;
 
-	rl_catch_signals = 1;
 	here_fd = open(hdoc->filename_temp[idx], O_RDWR | O_CREAT | O_TRUNC, 0666);
 	pid = fork();
 	if (pid < 0)
 		exit(1);
 	if (pid == 0)
 	{
-		ft_signal_child();
-		signal(SIGQUIT, SIG_IGN);
+		ft_signal_child_hd();
 		while (1)
 		{
 			str = readline("> ");
@@ -129,10 +82,10 @@ int	ft_here_doc(t_heredoc *hdoc, int idx)
 			free(str);
 		}
 	}
-	signal(SIGINT, signal_handler_for_parent);
-	signal(SIGQUIT, SIG_IGN);
+	ignores();
 	wait(&status);
 	if (WIFSIGNALED(status))
 		exit_status = -5;
+	init_signalaction();
 	return (here_fd);
 }
