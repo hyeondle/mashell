@@ -69,8 +69,9 @@ char	*find_command_path(char *cmd, char **envp)
 			free(buffer);
 		j++;
 	}
-	ft_putstr_fd("command not found\n", 2);
-	exit(1);
+	// ft_putstr_fd(" command not found\n", 2);
+	ft_putstr_fd("error\n", 2);
+	exit(127);
 	return (NULL);
 }
 
@@ -83,7 +84,8 @@ t_bool	exec(char **cmd_args, char **envp)
 	cmd_with_path = find_command_path(cmd_args[0], envp);
 	if (execve(cmd_with_path, cmd_args, envp) == -1)
 	{
-		exit(1);
+		ft_putstr_fd("exec error\n", 2);
+		exit(126);
 	}
 	return (TRUE);
 }
