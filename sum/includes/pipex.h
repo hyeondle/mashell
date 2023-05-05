@@ -6,7 +6,7 @@
 /*   By: hyejeong <hyejeong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 10:05:49 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/05/06 03:14:20 by hyejeong         ###   ########.fr       */
+/*   Updated: 2023/05/06 03:36:01 by hyejeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "../libft/mylibft.h"
 # include "./structs.h"
 
-int	g_exit_status;
+int			g_exit_status;
 
 /*			deque			*/
 t_deque		*new_deque(void);
