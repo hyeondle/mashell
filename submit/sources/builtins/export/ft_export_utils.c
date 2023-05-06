@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyejeong <hyejeong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 23:14:01 by hyejeong          #+#    #+#             */
-/*   Updated: 2023/05/06 09:31:30 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/05/06 13:12:37 by hyejeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	go_run_cmd(char **inputs, t_setting **set, int i)
 	free_temp_env(r_input);
 }
 
-void	report_error(const char *c)
+void	report_error(const char *c, t_setting **set)
 {
 	char	*err_str;
 	char	*err_str2;
@@ -69,6 +69,7 @@ void	report_error(const char *c)
 	ft_putstr_fd(err_str2, STDERR_FILENO);
 	free(err_str);
 	free(err_str2);
+	(*set)->last_exit_status = 1;
 }
 
 int	check_export_input(char *str)

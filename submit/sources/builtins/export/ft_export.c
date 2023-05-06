@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyejeong <hyejeong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 02:47:04 by Linsio            #+#    #+#             */
-/*   Updated: 2023/05/06 09:01:44 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/05/06 13:12:08 by hyejeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,8 @@ int	ft_export(t_setting **set, char **inputs)
 		else if (check_export_input(inputs[i]))
 		{
 			(*set)->last_exit_status = 1;
-			report_error(inputs[i]);
-			return (0);
+			report_error(inputs[i], set);
+			return (1);
 		}
 		add_env(&((*set)->env_list), inputs[i], set);
 		i++;

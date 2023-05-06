@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyejeong <hyejeong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 23:53:34 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/05/06 09:21:19 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/05/06 13:11:40 by hyejeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ int		ft_cd(char **inputs, t_setting **set);
 //			export utils		//
 char	*make_export_str(char *str);
 void	go_run_cmd(char **inputs, t_setting **set, int i);
-void	report_error(const char *c);
+void	report_error(const char *c, t_setting **set);
 int		check_export_input(char *str);
 int		check_pipe(char **str);
 

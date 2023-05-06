@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_env.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyejeong <hyejeong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 00:40:37 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/05/06 09:09:12 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/05/06 13:11:58 by hyejeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	go_update_env(t_env_list **env, const char *key_value_pair, \
 	}
 }
 
-int	is_key_valid(const char *str)
+int	is_key_valid(const char *str, t_setting **set)
 {
 	char	*key;
 	int		i;
@@ -52,7 +52,7 @@ int	is_key_valid(const char *str)
 		if (!((key[i] > 47 && key[i] < 58) || (key[i] > 64 && key[i] < 91) \
 		|| (key[i] > 96 && key[i] < 123) || key[i] == 95))
 		{
-			report_error(str);
+			report_error(str, set);
 			free(key);
 			return (1);
 		}
@@ -98,7 +98,7 @@ int	add_env(t_env_list **env, const char *key_value_pair, t_setting **set)
 		free(new_node);
 		return (1);
 	}
-	if (is_key_valid(key_value_pair))
+	if (is_key_valid(key_value_pair, set))
 		return (0);
 	if (already_exist(env, key_value_pair, set))
 		return (0);
