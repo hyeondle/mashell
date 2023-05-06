@@ -6,7 +6,7 @@
 /*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 10:05:50 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/04/29 10:44:40 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/05/06 23:36:12 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	redir_outfile_apd(t_node *node, int i)
 	close(fd_out);
 }
 
-void	redir_heredoc(t_node *node, int i, int idx_hd_in_node)
+void	redir_heredoc(t_node *node, int idx_hd_in_node)
 {
 	int	fd_in;
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyejeong <hyejeong@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 23:53:34 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/05/06 13:11:40 by hyejeong         ###   ########.fr       */
+/*   Updated: 2023/05/06 23:34:03 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ char	*get_value(const char *str);
 char	*get_input(t_setting **set);
 int		input_check(char *input);
 char	*check_input_add(char *additional);
-char	*del_quotes(t_setting **set, char *str);
+char	*del_quotes(char *str);
 
 /*			execute				*/
 int		execute(char **inputs, t_setting **set);
@@ -107,7 +107,7 @@ int		check_delimeter_type_i(char	*str);
 size_t	dtab_size(char **str);
 char	*deli_char(char c);
 char	*deli_char_over_delim(char c, int i, int j);
-int		over_2_delims_i(char **str, int i, int k);
+int		over_2_delims_i(int k);
 
 /*			builtins			*/
 int		ft_echo(char **inputs, t_setting **set);

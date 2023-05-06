@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyejeong <hyejeong@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 02:47:04 by Linsio            #+#    #+#             */
-/*   Updated: 2023/05/06 13:12:08 by hyejeong         ###   ########.fr       */
+/*   Updated: 2023/05/06 23:30:41 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ static void	export_with_no_input(char **envp)
 int	ft_export(t_setting **set, char **inputs)
 {
 	int		i;
-	char	*key;
 
 	i = 1;
 	if (!inputs[1])

@@ -6,7 +6,7 @@
 /*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 10:05:53 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/05/05 19:56:25 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/05/06 23:37:33 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	check_pipe_redir(t_node *node, t_info *info)
 		dup2(info->pipes[node->idx][WRITE], STDOUT_FILENO);
 }
 
-void	check_file_redir(t_node *node, t_info *info)
+void	check_file_redir(t_node *node)
 {
 	int	idx_hd_in_node;
 	int	i;
@@ -39,7 +39,7 @@ void	check_file_redir(t_node *node, t_info *info)
 			if (ft_strcmp(node->order_redir[i], ">>") == 0)
 				redir_outfile_apd(node, i);
 			if (ft_strcmp(node->order_redir[i], "<<") == 0)
-				redir_heredoc(node, i, idx_hd_in_node++);
+				redir_heredoc(node, idx_hd_in_node++);
 			i++;
 		}
 	}
@@ -48,7 +48,7 @@ void	check_file_redir(t_node *node, t_info *info)
 void	child_process(t_node *node, t_info *info, char **envp, t_setting **set)
 {
 	check_pipe_redir(node, info);
-	check_file_redir(node, info);
+	check_file_redir(node);
 	if (node->cmd)
 		exec(node->cmd, envp, set);
 	exit(0);
@@ -67,7 +67,6 @@ int	ft_wait_pids(t_info *info, t_setting **set)
 {
 	int	i;
 	int	status;
-	int	exit_status;
 
 	i = 0;
 	while (i < (info->num_pipe + 1))
@@ -83,5 +82,5 @@ int	ft_wait_pids(t_info *info, t_setting **set)
 		}
 		i++;
 	}
-	return (exit_status);
+	return ((*set)->last_exit_status);
 }

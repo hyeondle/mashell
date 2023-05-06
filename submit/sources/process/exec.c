@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyejeong <hyejeong@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 10:05:42 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/05/06 02:06:50 by hyejeong         ###   ########.fr       */
+/*   Updated: 2023/05/06 23:35:34 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/pipex.h"
 #include "../../includes/minishell.h"
 
-void	check_perm_dir(char **cmd_args, char **envp)
+void	check_perm_dir(char **cmd_args)
 {
 	struct stat	sb;
 
@@ -73,7 +73,7 @@ t_bool	exec(char **cmd_args, char **envp, t_setting **set)
 	if (ft_strcmp("echo", cmd_args[0]) != 0 && \
 	ft_strcmp("env", cmd_args[0]) != 0 && ft_strcmp("export", cmd_args[0]) != 0)
 	{
-		check_perm_dir(cmd_args, envp);
+		check_perm_dir(cmd_args);
 		cmd_with_path = find_command_path(cmd_args[0], envp);
 		if (execve(cmd_with_path, cmd_args, envp) == -1)
 			putstr_exit("error\n", 2, 127);

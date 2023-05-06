@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   del_quotes.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Linsio <Linsio@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 19:41:58 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/05/03 14:11:07 by Linsio           ###   ########.fr       */
+/*   Updated: 2023/05/06 23:27:08 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ static char	*deleted_str(char *str, char *temp, t_quote quote)
 	return (temp);
 }
 
-char	*del_quotes(t_setting **set, char *str)
+char	*del_quotes(char *str)
 {
 	char	*temp;
 	int		i;

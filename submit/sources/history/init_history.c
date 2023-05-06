@@ -6,7 +6,7 @@
 /*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 03:53:58 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/04/29 09:19:29 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/05/06 23:28:00 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ static t_history	*ft_add_l_history(t_history *temp, char	*str)
 
 void	init_history(t_setting **setting)
 {
-	t_history	*hist;
 	t_history	*temp;
 	char		*str;
 	int			fd;

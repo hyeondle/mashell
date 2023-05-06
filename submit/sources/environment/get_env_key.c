@@ -6,7 +6,7 @@
 /*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 04:30:19 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/04/29 09:04:44 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/05/06 23:30:52 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 char	*get_env_key(char *str, int i)
 {
-	int		l;
 	int		k;
 	int		j;
 	char	*key;

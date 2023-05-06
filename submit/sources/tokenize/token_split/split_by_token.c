@@ -6,7 +6,7 @@
 /*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 08:49:06 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/04/29 09:47:22 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/05/06 23:34:34 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	split_case_i(char **str, int i)
 	k = 0;
 	k = check_delimeter_type_i(str[i]);
 	if (str[i][k + 1] != '\0' && token_check(str[i][k + 1]) == 1)
-		return (over_2_delims_i(str, i, k));
+		return (over_2_delims_i(k));
 	else
 		return (split_case_index_check(str, i, k));
 }

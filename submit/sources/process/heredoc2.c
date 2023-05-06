@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyejeong <hyejeong@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 10:05:44 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/05/06 03:16:00 by hyejeong         ###   ########.fr       */
+/*   Updated: 2023/05/06 23:35:52 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ void	ft_here_doc_child(int idx, int *here_fd, t_heredoc *hdoc)
 
 int	ft_here_doc(t_heredoc *hdoc, int idx)
 {
-	char	*str;
 	pid_t	pid;
 	int		here_fd;
 	int		status;

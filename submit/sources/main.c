@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyejeong <hyejeong@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 23:53:07 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/05/06 13:01:24 by hyejeong         ###   ########.fr       */
+/*   Updated: 2023/05/06 23:56:28 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 static void	handler(int sig, siginfo_t *info, void *oldsiga)
 {
+	(void)info;
+	(void)oldsiga;
 	if (sig == SIGQUIT)
 		rl_redisplay();
 	else if (sig == SIGINT)
@@ -88,6 +90,8 @@ int	main(int argc, char **argv, char **envp)
 	char		*input;
 	int			i;
 
+	(void)argc;
+	(void)argv;
 	signal(SIGINT, SIG_IGN);
 	set = init_set(envp);
 	i = 0;

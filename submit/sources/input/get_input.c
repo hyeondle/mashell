@@ -3,30 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   get_input.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyejeong <hyejeong@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 01:33:48 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/05/05 23:46:02 by hyejeong         ###   ########.fr       */
+/*   Updated: 2023/05/06 23:23:27 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-static t_bool	forced_terminated(char *input, char *input_p)
-{
-	int	i;
+// static t_bool	forced_terminated(char *input)
+// {
+// 	int	i;
 
-	i = 0;
-	if (!input)
-	{
-		printf("unexpected EOF while looking for matching `\n");
-		printf("syntax error: unexpected end of file\n");
-		free(input);
-		input = NULL;
-		return (0);
-	}
-	return (1);
-}
+// 	i = 0;
+// 	if (!input)
+// 	{
+// 		printf("unexpected EOF while looking for matching `\n");
+// 		printf("syntax error: unexpected end of file\n");
+// 		free(input);
+// 		input = NULL;
+// 		return (0);
+// 	}
+// 	return (1);
+// }
 
 char	*join_input(char *input, char *input_add)
 {
@@ -43,7 +43,6 @@ char	*join_input(char *input, char *input_add)
 char	*get_input(t_setting **set)
 {
 	char	*input;
-	char	*input_add;
 	int		i;
 
 	input = readline("minishell> ");

@@ -6,7 +6,7 @@
 /*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 02:03:12 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/05/06 09:03:03 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/05/06 23:27:32 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	operation(char *input, t_setting **set)
 	i = 0;
 	while (tokenized_str[i])
 	{
-		tokenized_str[i] = del_quotes(set, tokenized_str[i]);
+		tokenized_str[i] = del_quotes(tokenized_str[i]);
 		i++;
 	}
 	execute(tokenized_str, set);
