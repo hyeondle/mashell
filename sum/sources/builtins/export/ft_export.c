@@ -3,14 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyejeong <hyejeong@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 02:47:04 by Linsio            #+#    #+#             */
-/*   Updated: 2023/05/05 23:26:51 by hyejeong         ###   ########.fr       */
+/*   Updated: 2023/05/06 09:01:44 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "../../../includes/minishell.h"
 
 #include "../../../includes/minishell.h"
 

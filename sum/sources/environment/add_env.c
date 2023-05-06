@@ -6,7 +6,7 @@
 /*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 00:40:37 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/04/29 09:04:51 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/05/06 09:09:12 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ int	is_key_valid(const char *str)
 	while (key[i])
 	{
 		if (!((key[i] > 47 && key[i] < 58) || (key[i] > 64 && key[i] < 91) \
-		|| (key[i] > 96 && key[i] < 123)))
+		|| (key[i] > 96 && key[i] < 123) || key[i] == 95))
 		{
-			printf("export: %s: not a valid identifier\n", str);
+			report_error(str);
 			free(key);
 			return (1);
 		}

@@ -6,7 +6,7 @@
 /*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 23:53:34 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/05/06 00:24:30 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/05/06 09:21:19 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,10 @@ fcntl.h		=	open, read, close
 #  define HISTORY_SIZE	1024
 # endif
 
+/*			main				*/
+void	init_signalaction(void);
+void	free_settings(t_setting *set);
+
 /*			actors				*/
 void	operation(char *input, t_setting **set);
 
@@ -58,11 +62,15 @@ char	*get_env_value(t_env_list *env, const char *key, t_setting **set);
 char	*get_env_key(char *str, int i);
 int		update_env(t_env_list *env, const char *key, const char *new_value);
 void	free_env(t_env_list	*env);
+char	*convertion(t_setting **set, char *str);
+char	*get_key(const char *str);
+char	*get_value(const char *str);
 
 /*			input				*/
 char	*get_input(t_setting **set);
 int		input_check(char *input);
 char	*check_input_add(char *additional);
+char	*del_quotes(t_setting **set, char *str);
 
 /*			execute				*/
 int		execute(char **inputs, t_setting **set);
@@ -79,6 +87,7 @@ size_t	quote_leng(const char *s, size_t k);
 size_t	tab_size(char *s);
 t_quote	check_quote(char temp);
 size_t	new_strlen_m(char *str, size_t k);
+
 //			token split			//
 char	**split_by_token(char **str);
 char	**split_by_case(char **str, int i, int k);
@@ -99,9 +108,9 @@ size_t	dtab_size(char **str);
 char	*deli_char(char c);
 char	*deli_char_over_delim(char c, int i, int j);
 int		over_2_delims_i(char **str, int i, int k);
+
 /*			builtins			*/
 int		ft_echo(char **inputs, t_setting **set);
-
 int		ft_env(char **envp, t_setting **set);
 int		ft_exit(char **inputs, t_setting **set);
 int		ft_export(t_setting **set, char **inputs);
@@ -109,19 +118,11 @@ void	free_temp_env(char **temp_env);
 int		ft_unset(t_setting **set, char **inputs);
 int		ft_pwd(void);
 int		ft_cd(char **inputs, t_setting **set);
+//			export utils		//
 char	*make_export_str(char *str);
 void	go_run_cmd(char **inputs, t_setting **set, int i);
-void	report_error(char *c);
+void	report_error(const char *c);
 int		check_export_input(char *str);
 int		check_pipe(char **str);
-
-/*temp*/
-char	*convertion(t_setting **set, char *str);
-char	*del_quotes(t_setting **set, char *str);
-
-char	*get_key(const char *str);
-char	*get_value(const char *str);
-void	init_signalaction(void);
-void	free_settings(t_setting *set);
 
 #endif

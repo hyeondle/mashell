@@ -3,14 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyejeong <hyejeong@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 23:14:01 by hyejeong          #+#    #+#             */
-/*   Updated: 2023/05/05 23:17:01 by hyejeong         ###   ########.fr       */
+/*   Updated: 2023/05/06 09:31:30 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "../../../includes/minishell.h"
 
 #include "../../../includes/minishell.h"
 
@@ -61,13 +59,13 @@ void	go_run_cmd(char **inputs, t_setting **set, int i)
 	free_temp_env(r_input);
 }
 
-void	report_error(char *c)
+void	report_error(const char *c)
 {
 	char	*err_str;
 	char	*err_str2;
 
 	err_str = ft_strjoin("export: `", c);
-	err_str2 = ft_strjoin(err_str, "': not a valid identifier\n");
+	err_str2 = ft_strjoin(err_str, "\': not a valid identifier\n");
 	ft_putstr_fd(err_str2, STDERR_FILENO);
 	free(err_str);
 	free(err_str2);
@@ -82,7 +80,7 @@ int	check_export_input(char *str)
 	{
 		if (str[i] == '=')
 		{
-			if (i == 0 || !str[i - 1] || !ft_isalnum(str[i - 1]))
+			if (i == 0 || !str[i - 1] || !(ft_isalpha(str[0]) || str[0] == '_'))
 				return (1);
 			return (0);
 		}
@@ -109,7 +107,9 @@ int	check_pipe(char **str)
 	{
 		if (ft_strcmp("|", str[i]) == 0 || ft_strcmp("<", str[i]) == 0 || \
 		ft_strcmp(">", str[i]) == 0)
+		{
 			return (1);
+		}
 		i++;
 	}
 	return (0);

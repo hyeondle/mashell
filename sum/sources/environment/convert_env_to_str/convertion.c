@@ -6,7 +6,7 @@
 /*   By: hyeondle <hyeondle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 17:23:42 by hyeondle          #+#    #+#             */
-/*   Updated: 2023/05/06 02:58:25 by hyeondle         ###   ########.fr       */
+/*   Updated: 2023/05/06 08:47:16 by hyeondle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,11 @@ static int	dollardollar(char *str)
 	quote = NONE;
 	while (str[i])
 	{
-		if (str[i] == '\'' && quote == SINGLE)
+		if (str[i] == '\"' && quote == NONE)
+			quote = DOUBLE;
+		else if (str[i] == '\"' && quote == DOUBLE)
+			quote = NONE;
+		else if (str[i] == '\'' && quote == SINGLE)
 			quote = NONE;
 		else if (str[i] == '\'' && quote == NONE)
 			quote = SINGLE;
